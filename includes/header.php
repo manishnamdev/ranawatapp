@@ -2,7 +2,7 @@
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
-<title>श्रीमाली ब्राह्मण समाज , रानी </title>
+<title>श्री रंकण भवन रांकावत समाज संस्था, रानी स्टे.</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap 5 -->
@@ -17,7 +17,7 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: #333333;
+            background: linear-gradient(135deg, #d32f2f, #f57c00);
             border-bottom: 1px solid #ddd;
             z-index: 999;
             text-align: center;
@@ -54,6 +54,6 @@
 <body>
 
 <div class="app-header">
-    <div class="top-text">चंद्रवा प्रान्त गोडवाड़</div>
-  <div class="bottom-text">श्रीमाली ब्राह्मण समाज सेवा समिति, रानी </div>
+    <div class="top-text">सरकार द्वारा मान्यता प्राप्त रजिस्ट्रेशन क्रमांक 685/80-81</div>
+  <div class="bottom-text">श्री रंकण भवन रांकावत समाज संस्था, रानी स्टे.</div>
 </div>

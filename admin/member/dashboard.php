@@ -44,7 +44,7 @@ $voteLabel = [
     color: #fff;
 }
 .card-gradient-purple {
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: linear-gradient(135deg, #d32f2f, #f57c00);
     color: #fff;
 }
 .card-gradient-orange {

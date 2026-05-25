@@ -3,7 +3,7 @@
 <style>
 .contact-card {
     border-radius: 18px;
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: linear-gradient(135deg, #d32f2f, #f57c00);
     color: #fff;
 }
 .contact-icon {
@@ -21,11 +21,11 @@
             <h6 class="fw-bold">संपर्क करें</h6>
 
             <p class="mb-1">
-                श्रीमाली ब्राह्मण समाज सेवा समिति
+                श्री रंकण भवन रांकावत समाज संस्था, रानी स्टे.
             </p>
 
             <p class="mb-1">
-                📍 चंद्रवा प्रान्त, गोडवाड़
+                📍 सरकार द्वारा मान्यता प्राप्त रजिस्ट्रेशन क्रमांक 685/80-81
             </p>
 
             <p class="mb-1">

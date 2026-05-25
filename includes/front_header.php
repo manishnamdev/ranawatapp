@@ -2,7 +2,7 @@
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
-    <title>श्रीमाली ब्राह्मण समाज</title>
+    <title>श्री रंकण भवन रांकावत समाज संस्था, रानी स्टे.</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -17,23 +17,39 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: linear-gradient(135deg, #d32f2f, #f57c00);
             color: #fff;
             z-index: 999;
-            text-align: center;
             padding: 8px 5px 10px;
             box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .header-logo {
+            width: 150px;
+            height: auto;
+            border-radius: 50%;
+            object-fit: contain;
+            background: transparent;
+            padding: 0;
+        }
+
+        .header-text-container {
+            text-align: left;
         }
 
         .header-line-1 {
-            font-size: 13px;
-            font-weight: 500;
+            font-size: 17px;
+            font-weight: 800;
             letter-spacing: 0.5px;
         }
 
         .header-line-2 {
-            font-size: 16px;
-            font-weight: 700;
+            font-size: 13px;
+            font-weight: 500;
             margin-top: 2px;
         }
 
@@ -65,7 +81,9 @@
 <body>
 
 <div class="app-header">
-    <div class="header-line-1">चंद्रवा प्रान्त गोडवाड़</div>
-    <div class="header-line-2">श्रीमाली ब्राह्मण समाज सेवा समिति</div>
-    <div class="header-line-3">ऋषिकुल</div>
+    <img src="assets/images/logo.jpg" alt="Logo" class="header-logo">
+    <div class="header-text-container">
+        <div class="header-line-1">श्री रंकण भवन रांकावत समाज संस्था, रानी स्टे.</div>
+        <div class="header-line-2">सरकार द्वारा मान्यता प्राप्त रजिस्ट्रेशन क्रमांक 685/80-81</div>
+    </div>
 </div>

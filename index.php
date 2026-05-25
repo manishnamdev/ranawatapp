@@ -11,7 +11,7 @@ if (isset($_SESSION['member_id'])) {
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
-    <title>श्रीमाली ब्राह्मण समाज सेवा समिति, रानी</title>
+    <title>श्री रंकण भवन रांकावत समाज संस्था, रानी स्टे.</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
@@ -26,22 +26,38 @@ if (isset($_SESSION['member_id'])) {
         .header {
             position: sticky;
             top: 0;
-            text-align: center;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: linear-gradient(135deg, #d32f2f, #f57c00);
             color: #fff;
             padding: 12px 8px 14px;
             box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .header-logo {
+            width: 150px;
+            height: auto;
+            border-radius: 50%;
+            object-fit: contain;
+            background: transparent;
+            padding: 0;
+        }
+
+        .header-text-wrap {
+            text-align: left;
         }
 
         .header small {
-            font-size: 14px;
-            opacity: 0.95;
+            font-size: 13px;
+            font-weight: 500;
         }
 
         .header h2 {
             margin: 4px 0;
-            font-size: 18px;
-            font-weight: 700;
+            font-size: 19px;
+            font-weight: 800;
         }
 
         .header .tagline {
@@ -101,6 +117,11 @@ if (isset($_SESSION['member_id'])) {
             color: #053b5c;
         }
 
+        .btn-history {
+            background: linear-gradient(135deg, #f6d365, #fda085);
+            color: #7b4a03;
+        }
+
         .btn:active {
             transform: scale(0.98);
         }
@@ -156,9 +177,11 @@ if (isset($_SESSION['member_id'])) {
 
 <body>
     <div class="header">
-        <small>चंद्रवा प्रान्त गोडवाड़</small>
-        <h2>श्रीमाली ब्राह्मण समाज सेवा समिति, रानी</h2>
-        <div class="tagline">ऋषिकुल</div>
+        <img src="assets/images/logo.jpg" alt="Logo" class="header-logo">
+        <div class="header-text-wrap">
+            <h2>श्री रंकण भवन रांकावत समाज संस्था, रानी स्टे.</h2>
+            <small>सरकार द्वारा मान्यता प्राप्त रजिस्ट्रेशन क्रमांक 685/80-81</small>
+        </div>
     </div>
 
     <div class="container">
@@ -185,6 +208,10 @@ if (isset($_SESSION['member_id'])) {
                 Login करें
             </button>
 
+            <button class="btn btn-history" onclick="goToHistory()">
+                इतिहास
+            </button>
+
             <div class="help-link-wrap">
                 <a href="forgot_pin.php" class="help-link">
                     🔑 लॉगिन पिन भूल गए?
@@ -193,7 +220,7 @@ if (isset($_SESSION['member_id'])) {
         </div>
 
         <div class="footer">
-            © श्रीमाली ब्राह्मण समाज सेवा समिति
+            © श्री रंकण भवन रांकावत समाज संस्था
         </div>
     </div>
 
@@ -204,6 +231,10 @@ if (isset($_SESSION['member_id'])) {
 
         function goToLogin() {
             window.location.href = "login.php";
+        }
+
+        function goToHistory() {
+            window.location.href = "history.php";
         }
     </script>
 </body>

@@ -103,9 +103,8 @@ $members = $conn->query("
     <button class="no-print-btn" onclick="window.print()">📥 Download / Print PDF</button>
 
     <div class="header">
-        <div style="font-size: 16px; font-weight: 500;">चंद्रवा प्रान्त गोडवाड़</div>
-        <div style="font-size: 24px; font-weight: 700; margin: 5px 0;">श्रीमाली ब्राह्मण समाज सेवा समिति</div>
-        <div style="font-size: 18px; font-weight: 600;">ऋषिकुल</div>
+        <div style="font-size: 16px; font-weight: 500;">सरकार द्वारा मान्यता प्राप्त रजिस्ट्रेशन क्रमांक 685/80-81</div>
+        <div style="font-size: 24px; font-weight: 700; margin: 5px 0;">श्री रंकण भवन रांकावत समाज संस्था, रानी स्टे.</div>
         <hr style="border: 1px solid #333; margin: 15px 0;">
         <h2 style="margin: 0; font-size: 20px;">मतदाता सूची (Voter List)</h2>
         <p style="margin: 5px 0 0; font-size: 14px; color: #666;">दिनांक: <?php echo date('d-m-Y'); ?></p>

@@ -20,7 +20,7 @@ include "includes/front_header.php"; ?>
     inset: 0;
     border-radius: 22px;
     padding: 2px;
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: linear-gradient(135deg, #d32f2f, #f57c00);
     -webkit-mask:
         linear-gradient(#fff 0 0) content-box,
         linear-gradient(#fff 0 0);

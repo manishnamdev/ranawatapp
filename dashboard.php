@@ -528,6 +528,22 @@ $voteLabel = [
             </div>
         </section>
 
+        <section class="card app-card section-card">
+            <div class="card-body">
+                <div class="section-header">
+                    <span class="section-icon" style="background: linear-gradient(135deg, #f6d365, #fda085);">📜</span>
+                    <div>
+                        <h2 class="section-title">इतिहास</h2>
+                        <p class="section-desc">समाज का इतिहास और अन्य जानकारी</p>
+                    </div>
+                </div>
+
+                <a href="history.php" class="btn app-btn w-100" style="background: linear-gradient(135deg, #f6d365, #fda085); color: #7b4a03; font-weight: 700;">
+                    इतिहास देखें
+                </a>
+            </div>
+        </section>
+
         <div class="logout-wrap">
             <a href="logout.php" class="btn btn-outline-danger btn-sm">
                 लॉगआउट
