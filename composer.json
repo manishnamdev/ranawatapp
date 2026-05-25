@@ -1,0 +1,12 @@
+{
+    "name": "hastakshr/push",
+    "authors": [
+        {
+            "name": "Manish Home",
+            "email": "manishparmarnamdev@gmail.com"
+        }
+    ],
+    "require": {
+        "minishlink/web-push": "^10.0"
+    }
+}
