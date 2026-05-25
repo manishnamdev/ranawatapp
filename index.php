@@ -220,7 +220,8 @@ if (isset($_SESSION['member_id'])) {
         </div>
 
         <div class="footer">
-            © श्री रंकण भवन रांकावत समाज संस्था
+            © श्री रंकण भवन रांकावत समाज संस्था<br>
+            Developed by <a href="https://arbudaedutech.in" target="_blank" style="color: #6b7280; text-decoration: none; font-weight: bold;">Arbuda Edutech</a>
         </div>
     </div>
 

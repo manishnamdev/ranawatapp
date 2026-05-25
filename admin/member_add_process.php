@@ -14,7 +14,6 @@ $name   = $_POST['name'] ?? '';
 $mobile = trim($_POST['mobile'] ?? '');
 $pin    = $_POST['pin'] ?? '';
 $nivasi = $_POST['nivasi'] ?? '';
-$avtang = $_POST['avtang'] ?? '';
 $gotra  = $_POST['gotra'] ?? '';
 $whatsapp_number = trim($_POST['whatsapp_number'] ?? '');
 
@@ -47,8 +46,8 @@ $hashed_pin = password_hash($pin, PASSWORD_DEFAULT);
 // ✅ CORRECT INSERT QUERY
 $stmt = $conn->prepare("
     INSERT INTO members
-    (name, mobile, whatsapp_number, pin, nivasi, avtang, gotra, status, is_verified, is_canvote)
-    VALUES (?,?,?,?,?,?,?,'approved',?,?)
+    (name, mobile, whatsapp_number, pin, nivasi, gotra, status, is_verified, is_canvote)
+    VALUES (?,?,?,?,?,?,'approved',?,?)
 ");
 
 if (!$stmt) {
@@ -57,13 +56,12 @@ if (!$stmt) {
 
 // ✅ CORRECT bind_param (7 strings + 2 ints)
 $stmt->bind_param(
-    "sssssssii",
+    "ssssssii",
     $name,
     $mobile,
     $whatsapp_number,
     $hashed_pin,
     $nivasi,
-    $avtang,
     $gotra,
     $is_verified,
     $is_canvote

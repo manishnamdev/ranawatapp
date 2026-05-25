@@ -62,7 +62,7 @@ Based on the code, the project appears to rely on at least these tables:
 
 Important member fields used in code include:
 
-- `id`, `name`, `nivasi`, `avtang`, `gotra`, `mobile`
+- `id`, `name`, `nivasi`, `gotra`, `mobile`
 - `pin`, `security_question`, `security_answer`
 - `status`
 - `payment_screenshot`, `payment_status`

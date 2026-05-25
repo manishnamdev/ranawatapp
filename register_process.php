@@ -2,9 +2,13 @@
 session_start();
 include "config/db.php";
 
+if ($_SERVER['REQUEST_METHOD'] !== 'POST' || empty($_POST['mobile']) || empty($_POST['pin'])) {
+    header("Location: register.php");
+    exit;
+}
+
 $name = trim($_POST['name']);
 $nivasi = trim($_POST['nivasi']);
-$avtang = $_POST['avtang'];
 $gotra = $_POST['gotra'];
 $mobile = trim($_POST['mobile']);
 $pin = $_POST['pin'];
@@ -26,13 +30,13 @@ $hashed_pin = password_hash($pin, PASSWORD_DEFAULT);
 
 $stmt = $conn->prepare("
 INSERT INTO members
-(name,nivasi,avtang,gotra,mobile,pin,security_question,security_answer)
-VALUES (?,?,?,?,?,?,?,?)
+(name,nivasi,gotra,mobile,pin,security_question,security_answer)
+VALUES (?,?,?,?,?,?,?)
 ");
 
 $stmt->bind_param(
-    "ssssssss",
-    $name,$nivasi,$avtang,$gotra,
+    "sssssss",
+    $name,$nivasi,$gotra,
     $mobile,$hashed_pin,
     $security_question,$security_answer
 );

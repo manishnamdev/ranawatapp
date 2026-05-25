@@ -98,16 +98,6 @@ include "includes/front_header.php"; ?>
     
                         </div>
 
-  <div class="mb-3">
-    <label class="form-label small">अवटंग</label>
-        <select name="avtang" class="form-select" required>
-    <option value="">अवटंग चुनें</option>
-    <?php foreach ($AVTANG_LIST as $a): ?>
-        <option value="<?= $a; ?>"><?= $a; ?></option>
-    <?php endforeach; ?>
-</select>
-</div>
-
 
 <div class="mb-3">
     <label class="form-label small">गोत्र</label>

@@ -23,3 +23,6 @@ if ($conn->connect_error) {
 }
 $conn->set_charset("utf8mb4");
 $conn->query("SET time_zone = '+05:30'");
+
+require_once __DIR__ . '/../init_db.php';
+initialize_database($conn);

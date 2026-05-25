@@ -9,7 +9,7 @@ if (!isset($_SESSION['admin_id'])) {
 
 // Fetch only approved members for the voter list
 $members = $conn->query("
-    SELECT name, nivasi, avtang, mobile, aadhar_front, aadhar_back 
+    SELECT name, nivasi, mobile, aadhar_front, aadhar_back 
     FROM members 
     WHERE status = 'approved' 
     ORDER BY nivasi ASC, name ASC
@@ -116,7 +116,6 @@ $members = $conn->query("
                 <th style="width: 50px;">क्रमांक</th>
                 <th>नाम</th>
                 <th>गाँव</th>
-                <th>अवटंग</th>
                 <th>मोबाइल नंबर</th>
                 <th class="text-center">आधार कार्ड</th>
             </tr>
@@ -132,7 +131,6 @@ $members = $conn->query("
                     <td class="text-center"><?php echo $count++; ?></td>
                     <td><?php echo htmlspecialchars($m['name']); ?></td>
                     <td><?php echo htmlspecialchars($m['nivasi']); ?></td>
-                    <td><?php echo htmlspecialchars($m['avtang']); ?></td>
                     <td><?php echo htmlspecialchars($m['mobile']); ?></td>
                     <td class="text-center">
                         <?php if ($hasAadhar): ?>
@@ -147,7 +145,7 @@ $members = $conn->query("
             else:
             ?>
                 <tr>
-                    <td colspan="6" class="text-center">कोई स्वीकृत सदस्य नहीं मिला।</td>
+                    <td colspan="5" class="text-center">कोई स्वीकृत सदस्य नहीं मिला।</td>
                 </tr>
             <?php endif; ?>
         </tbody>

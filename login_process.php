@@ -1,6 +1,11 @@
 <?php
 session_start();
 include "config/db.php";
+if ($_SERVER['REQUEST_METHOD'] !== 'POST' || empty($_POST['mobile']) || empty($_POST['pin'])) {
+    header("Location: login.php");
+    exit;
+}
+
 $mobile = preg_replace('/\D/', '', $_POST['mobile']);
 $mobile = trim($mobile);
 $pin    = $_POST['pin'];

@@ -134,7 +134,6 @@ $voteLabel = [
 <div class="card card-gradient-green rounded-xl shadow-sm mb-3">
     <div class="card-body">
         <div class="info-line"><b>📍 निवासी :</b> <?= $member['nivasi']; ?></div>
-        <div class="info-line"><b>🧬 अवटंग :</b> <?= $member['avtang']; ?></div>
         <div class="info-line"><b>🔱 गोत्र :</b> <?= $member['gotra']; ?></div>
     </div>
 </div>

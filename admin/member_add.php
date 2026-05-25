@@ -53,16 +53,7 @@ if (!isset($_SESSION['admin_id'])) {
             </select>
         </div>
 
-        <!-- AVTANG -->
-        <div class="mb-3">
-            <label class="form-label">अवटंग</label>
-            <select name="avtang" class="form-select" required>
-                <option value="">अवटंग चुनें</option>
-                <?php foreach ($AVTANG_LIST as $a): ?>
-                    <option value="<?= $a; ?>"><?= $a; ?></option>
-                <?php endforeach; ?>
-            </select>
-        </div>
+
 
         <!-- GOTRA -->
         <div class="mb-3">

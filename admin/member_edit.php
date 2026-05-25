@@ -24,7 +24,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             name=?,
             mobile=?,
             nivasi=?,
-            avtang=?,
             gotra=?,
             status=?,
             payment_status=?,
@@ -37,7 +36,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = $_POST['name'];
     $mobile = $_POST['mobile'];
     $nivasi = $_POST['nivasi'];
-    $avtang = $_POST['avtang'];
     $gotra = $_POST['gotra'];
     $status = $_POST['status'];
     $payment_status = $_POST['payment_status'];
@@ -50,7 +48,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $name,
         $mobile,
         $nivasi,
-        $avtang,
         $gotra,
         $status,
         $payment_status,
@@ -101,17 +98,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </select>
         </div>
 
-        <!-- AVTANG -->
-        <div class="mb-3">
-            <label class="form-label">अवटंग</label>
-            <select name="avtang" class="form-select" required>
-                <?php foreach ($AVTANG_LIST as $a): ?>
-                    <option value="<?= $a; ?>" <?= ($member['avtang']==$a)?'selected':''; ?>>
-                        <?= $a; ?>
-                    </option>
-                <?php endforeach; ?>
-            </select>
-        </div>
+
 
         <!-- GOTRA -->
         <div class="mb-3">

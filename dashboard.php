@@ -363,10 +363,7 @@ $voteLabel = [
                     <div class="profile-key">निवासी</div>
                     <div class="profile-value"><?= htmlspecialchars($member['nivasi']); ?></div>
                 </div>
-                <div class="profile-row">
-                    <div class="profile-key">अवटंग</div>
-                    <div class="profile-value"><?= htmlspecialchars($member['avtang']); ?></div>
-                </div>
+
                 <div class="profile-row">
                     <div class="profile-key">गोत्र</div>
                     <div class="profile-value"><?= htmlspecialchars($member['gotra']); ?></div>
@@ -548,6 +545,11 @@ $voteLabel = [
             <a href="logout.php" class="btn btn-outline-danger btn-sm">
                 लॉगआउट
             </a>
+        </div>
+
+        <div class="text-center mt-3 mb-4" style="font-size: 13px; color: #6b7280;">
+            © श्री रंकण भवन रांकावत समाज संस्था<br>
+            Developed by <a href="https://arbudaedutech.in" target="_blank" style="color: #6b7280; text-decoration: none; font-weight: bold;">Arbuda Edutech</a>
         </div>
     </div>
 </div>

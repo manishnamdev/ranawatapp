@@ -32,16 +32,38 @@
     </div>
 
     <div class="card shadow-sm mb-4" style="border-radius: 18px;">
-        <div class="card-body">
-            <h5 class="fw-bold" style="color: #d32f2f;">संस्था के अध्यक्ष श्री शंकरलालजी</h5>
-            <p class="mb-0">के साथ समारोह के स्वागताध्यक्ष श्री मांगी लालजी (लुधियाने वाले ) और युवा मन्त्री श्री वाबूलालजी शर्मा। पीछे खडे है- कार्यकारिणी के सदस्य श्री वाबूलालजी पुत्र श्री तोलारामजी। (गत रंकण जयन्ती के अवसर पर लिया गया चित्र)</p>
+        <div class="card-body text-center">
+            <img src="http://localhost/rankawatsamajrani/public/assets/img/shankarlalji.png" class="img-fluid rounded mb-3 shadow-sm" alt="श्री शंकरलालजी" style="max-height: 250px;">
+            <h5 class="fw-bold text-start" style="color: #d32f2f;">संस्था के अध्यक्ष श्री शंकरलालजी</h5>
+            <p class="mb-0 text-start">के साथ समारोह के स्वागताध्यक्ष श्री मांगी लालजी (लुधियाने वाले ) और युवा मन्त्री श्री वाबूलालजी शर्मा। पीछे खडे है- कार्यकारिणी के सदस्य श्री वाबूलालजी पुत्र श्री तोलारामजी। (गत रंकण जयन्ती के अवसर पर लिया गया चित्र)</p>
         </div>
     </div>
 
     <div class="card shadow-sm mb-4" style="border-radius: 18px;">
-        <div class="card-body">
-            <h5 class="fw-bold" style="color: #d32f2f;">श्री चम्पालालजी (धरणावाले)</h5>
-            <p class="mb-0">द्वारा, श्री रंकण भवन संस्था रानी के प्रति उनकी सेवाओं के लिए संस्था के अध्यक्ष श्री शंकरलालजी ने उनका साफा बांधकर सम्मान किया। (गत रंकण जयन्ती के अवसर पर लिया गया चित्र)</p>
+        <div class="card-body text-center">
+            <img src="http://localhost/rankawatsamajrani/public/assets/img/improved_4.png" class="img-fluid rounded mb-3 shadow-sm" alt="श्री चम्पालालजी" style="max-height: 250px;">
+            <h5 class="fw-bold text-start" style="color: #d32f2f;">श्री चम्पालालजी (धरणावाले)</h5>
+            <p class="mb-0 text-start">द्वारा, श्री रंकण भवन संस्था रानी के प्रति उनकी सेवाओं के लिए संस्था के अध्यक्ष श्री शंकरलालजी ने उनका साफा बांधकर सम्मान किया। (गत रंकण जयन्ती के अवसर पर लिया गया चित्र)</p>
+        </div>
+    </div>
+
+    <div class="card shadow-sm mb-4" style="border-radius: 18px;">
+        <div class="card-body text-center">
+            <h5 class="fw-bold mb-3 text-start" style="color: #d32f2f;">गैलरी / अन्य चित्र</h5>
+            <div class="row g-3">
+                <div class="col-6 col-md-3">
+                    <img src="http://localhost/rankawatsamajrani/public/assets/img/vidhan.png" class="img-fluid rounded shadow-sm w-100" alt="समाज का इतिहास">
+                </div>
+                <div class="col-6 col-md-3">
+                    <img src="http://localhost/rankawatsamajrani/public/assets/img/1.png" class="img-fluid rounded shadow-sm w-100" alt="संस्था के सदस्य 1">
+                </div>
+                <div class="col-6 col-md-3">
+                    <img src="http://localhost/rankawatsamajrani/public/assets/img/improved_2.png" class="img-fluid rounded shadow-sm w-100" alt="संस्था के सदस्य 2">
+                </div>
+                <div class="col-6 col-md-3">
+                    <img src="http://localhost/rankawatsamajrani/public/assets/img/improved_3.png" class="img-fluid rounded shadow-sm w-100" alt="संस्था के सदस्य 3">
+                </div>
+            </div>
         </div>
     </div>
 </div>

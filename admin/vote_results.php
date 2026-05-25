@@ -8,7 +8,7 @@ if (!isset($_SESSION['admin_id'])) {
 }
 
 $all_votes = $conn->query("
-    SELECT v.vote_option, m.name, m.nivasi, m.avtang
+    SELECT v.vote_option, m.name, m.nivasi
     FROM votes v
     JOIN members m ON v.member_id = m.id
     ORDER BY v.vote_option, m.name
@@ -107,7 +107,6 @@ $labels = [
                                         <tr>
                                             <th class="ps-3 py-2">नाम (Name)</th>
                                             <th>निवासी (Nivasi)</th>
-                                            <th class="pe-3">अवतंग (Avtang)</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -115,7 +114,6 @@ $labels = [
                                             <tr>
                                                 <td class="ps-3 py-2 fw-medium"><?= htmlspecialchars($m['name']); ?></td>
                                                 <td><?= htmlspecialchars($m['nivasi']); ?></td>
-                                                <td class="pe-3"><?= htmlspecialchars($m['avtang']); ?></td>
                                             </tr>
                                         <?php endforeach; ?>
                                     </tbody>

@@ -21,7 +21,6 @@ $member = $stmt->get_result()->fetch_assoc();
 
     <p><b>Name:</b> <?= $member['name']; ?></p>
     <p><b>Nivasi:</b> <?= $member['nivasi']; ?></p>
-    <p><b>Avtang:</b> <?= $member['avtang']; ?></p>
     <p><b>Gotra:</b> <?= $member['gotra']; ?></p>
     <p><b>Mobile:</b> <?= $member['mobile']; ?></p>
     <p><b>Status:</b> <?= $member['status']; ?></p>
