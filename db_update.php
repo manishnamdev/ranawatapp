@@ -44,5 +44,33 @@ if ($conn->query($sql_push)) {
     echo "<p>❌ Error creating push_subscriptions: " . $conn->error . "</p>";
 }
 
+// 3. Update members table with missing columns
+$missing_columns = [
+    "nivasi" => "VARCHAR(100)",
+    "gotra" => "VARCHAR(100)",
+    "whatsapp_number" => "VARCHAR(20)",
+    "security_question" => "VARCHAR(255)",
+    "security_answer" => "VARCHAR(255)",
+    "payment_screenshot" => "VARCHAR(255)",
+    "payment_status" => "ENUM('pending', 'uploaded', 'verified') DEFAULT 'pending'",
+    "aadhar_front" => "VARCHAR(255)",
+    "aadhar_back" => "VARCHAR(255)",
+    "profile_photo" => "VARCHAR(255) DEFAULT NULL",
+    "is_verified" => "TINYINT(1) DEFAULT 0",
+    "is_canvote" => "TINYINT(1) DEFAULT 0"
+];
+
+foreach ($missing_columns as $col => $type) {
+    // Check if column exists
+    $check_col = $conn->query("SHOW COLUMNS FROM members LIKE '$col'");
+    if ($check_col->num_rows == 0) {
+        if ($conn->query("ALTER TABLE members ADD COLUMN $col $type")) {
+            echo "<p>✅ Added missing column <b>$col</b> to members table.</p>";
+        } else {
+            echo "<p>❌ Error adding column $col: " . $conn->error . "</p>";
+        }
+    }
+}
+
 echo "<p>Database update completed successfully!</p>";
 echo "<a href='dashboard.php'>Go to Dashboard</a>";
