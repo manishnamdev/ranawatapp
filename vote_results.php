@@ -13,7 +13,7 @@ $member_id = $_SESSION['member_id'];
 
 // get vote
 $res = $conn->query("
-    SELECT vote_option, voted_at
+    SELECT vote_option, created_at
     FROM votes
     WHERE member_id = $member_id
 ");
@@ -68,7 +68,7 @@ $voteLabel = [
 
             <small>
                 मतदान समय :
-                <?= date("d M Y, h:i A", strtotime($vote['voted_at'])) ?>
+                <?= date("d M Y, h:i A", strtotime($vote['created_at'])) ?>
             </small>
 
         </div>
