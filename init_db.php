@@ -62,6 +62,20 @@ function initialize_database($conn) {
             member_id INT NOT NULL,
             action VARCHAR(50),
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )",
+        
+        "CREATE TABLE IF NOT EXISTS family_members (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            member_id INT NOT NULL,
+            name VARCHAR(100) NOT NULL,
+            relation VARCHAR(50) NOT NULL,
+            birth_year INT,
+            marital_status VARCHAR(50),
+            gotra VARCHAR(100),
+            current_location VARCHAR(100),
+            education VARCHAR(255),
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            FOREIGN KEY (member_id) REFERENCES members(id) ON DELETE CASCADE
         )"
     ];
 

@@ -35,6 +35,8 @@ $voted = $conn->query("SELECT * FROM votes WHERE member_id=$id");
 $hasVoted = $voted->num_rows > 0;
 $voteData = $hasVoted ? $voted->fetch_assoc() : null;
 
+$family_members = $conn->query("SELECT * FROM family_members WHERE member_id=$id ORDER BY created_at ASC");
+
 $voteLabel = [
     'yes' => 'हाँ',
     'no'  => 'नहीं'
@@ -486,6 +488,51 @@ $voteLabel = [
                         अपडेट करें
                     </button>
                 </form>
+            </div>
+        </section>
+
+        <section class="card app-card section-card">
+            <div class="card-body">
+                <div class="section-header">
+                    <span class="section-icon section-icon-vote">👨‍👩‍👧‍👦</span>
+                    <div>
+                        <h2 class="section-title">परिवार के सदस्य</h2>
+                        <p class="section-desc">अपने परिवार के सदस्यों का विवरण जोड़ें</p>
+                    </div>
+                </div>
+
+                <?php if ($family_members->num_rows > 0): ?>
+                    <div class="table-responsive mb-3">
+                        <table class="table table-bordered table-sm small align-middle">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>नाम</th>
+                                    <th>रिश्ता</th>
+                                    <th>जन्म वर्ष</th>
+                                    <th>गोत्र</th>
+                                    <th>शिक्षा</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php while ($fm = $family_members->fetch_assoc()): ?>
+                                    <tr>
+                                        <td class="fw-bold"><?= htmlspecialchars($fm['name']); ?></td>
+                                        <td><?= htmlspecialchars($fm['relation']); ?></td>
+                                        <td><?= htmlspecialchars($fm['birth_year']); ?></td>
+                                        <td><?= htmlspecialchars($fm['gotra']); ?></td>
+                                        <td><?= htmlspecialchars($fm['education']); ?></td>
+                                    </tr>
+                                <?php endwhile; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                <?php else: ?>
+                    <div class="alert alert-info small text-center mb-3">आपने अभी तक परिवार के किसी सदस्य को नहीं जोड़ा है।</div>
+                <?php endif; ?>
+
+                <a href="family_add.php" class="app-btn app-btn-primary w-100 d-block text-center text-decoration-none">
+                    ➕ परिवार का सदस्य जोड़ें
+                </a>
             </div>
         </section>
 
