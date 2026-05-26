@@ -1,6 +1,10 @@
 <?php
 date_default_timezone_set("Asia/Kolkata");
 
+// Enable error reporting for debugging
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 // Check if running on localhost
 if ($_SERVER['HTTP_HOST'] === 'localhost' || $_SERVER['HTTP_HOST'] === '127.0.0.1') {
     // Local database credentials
