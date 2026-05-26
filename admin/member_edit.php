@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $is_canvote = $_POST['is_canvote'];
 
     $stmt->bind_param(
-        "ssssssssiii",
+        "sssssssiii",
         $name,
         $mobile,
         $nivasi,

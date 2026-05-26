@@ -7,7 +7,7 @@ if ($_SERVER['HTTP_HOST'] === 'localhost' || $_SERVER['HTTP_HOST'] === '127.0.0.
     $host = "localhost";
     $user = "root";
     $pass = "";
-    $dbname = "ranka";
+    $dbname = "rankawat";
 } else {
     // Production database credentials
     $host = "localhost"; // Usually localhost for shared hosting
