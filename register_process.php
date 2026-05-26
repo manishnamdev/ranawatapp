@@ -11,9 +11,10 @@ $name = trim($_POST['name']);
 $nivasi = trim($_POST['nivasi']);
 $gotra = $_POST['gotra'];
 $mobile = trim($_POST['mobile']);
+$haal_niwas = isset($_POST['haal_niwas']) ? trim($_POST['haal_niwas']) : '';
+$mool_niwas = isset($_POST['mool_niwas']) ? trim($_POST['mool_niwas']) : '';
+$vyavsaya = isset($_POST['vyavsaya']) ? trim($_POST['vyavsaya']) : '';
 $pin = $_POST['pin'];
-$security_question = $_POST['security_question'];
-$security_answer = trim($_POST['security_answer']);
 
 // duplicate mobile check
 $check = $conn->prepare("SELECT id FROM members WHERE mobile=?");
@@ -30,15 +31,14 @@ $hashed_pin = password_hash($pin, PASSWORD_DEFAULT);
 
 $stmt = $conn->prepare("
 INSERT INTO members
-(name,nivasi,gotra,mobile,pin,security_question,security_answer)
-VALUES (?,?,?,?,?,?,?)
+(name,nivasi,gotra,mobile,haal_niwas,mool_niwas,vyavsaya,pin)
+VALUES (?,?,?,?,?,?,?,?)
 ");
 
 $stmt->bind_param(
-    "sssssss",
+    "ssssssss",
     $name,$nivasi,$gotra,
-    $mobile,$hashed_pin,
-    $security_question,$security_answer
+    $mobile,$haal_niwas,$mool_niwas,$vyavsaya,$hashed_pin
 );
 
 if ($stmt->execute()) {

@@ -28,6 +28,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             status=?,
             payment_status=?,
             whatsapp_number=?,
+            haal_niwas=?,
+            mool_niwas=?,
+            vyavsaya=?,
             is_verified=?,
             is_canvote=?
         WHERE id=?
@@ -40,11 +43,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $status = $_POST['status'];
     $payment_status = $_POST['payment_status'];
     $whatsapp_number = $_POST['whatsapp_number'] ?? '';
+    $haal_niwas = $_POST['haal_niwas'] ?? '';
+    $mool_niwas = $_POST['mool_niwas'] ?? '';
+    $vyavsaya = $_POST['vyavsaya'] ?? '';
     $is_verified = $_POST['is_verified'];
     $is_canvote = $_POST['is_canvote'];
 
     $stmt->bind_param(
-        "sssssssiii",
+        "ssssssssssiii",
         $name,
         $mobile,
         $nivasi,
@@ -52,6 +58,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $status,
         $payment_status,
         $whatsapp_number,
+        $haal_niwas,
+        $mool_niwas,
+        $vyavsaya,
         $is_verified,
         $is_canvote,
         $id
@@ -110,6 +119,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </option>
                 <?php endforeach; ?>
             </select>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input class="form-control" name="haal_niwas" value="<?= htmlspecialchars($member['haal_niwas'] ?? ''); ?>" placeholder="हाल निवास">
+            <label>हाल निवास (वैकल्पिक)</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input class="form-control" name="mool_niwas" value="<?= htmlspecialchars($member['mool_niwas'] ?? ''); ?>" placeholder="मूल निवास">
+            <label>मूल निवास (वैकल्पिक)</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input class="form-control" name="vyavsaya" value="<?= htmlspecialchars($member['vyavsaya'] ?? ''); ?>" placeholder="व्यवसाय / प्रतिष्ठान">
+            <label>व्यवसाय / प्रतिष्ठान (वैकल्पिक)</label>
         </div>
 
         <hr>

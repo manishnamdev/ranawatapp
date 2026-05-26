@@ -8,11 +8,12 @@ $result = $conn->query("SELECT * FROM members WHERE mobile='$mobile' LIMIT 1");
 
 if ($result->num_rows > 0) {
 
-    $admin_whatsapp = "919784499743"; // admin number without +
+    $admin_whatsapp = "919602711591"; // admin number without +
     
     $text = "नमस्ते Admin,%0A"
           . "एक सदस्य ने लॉगिन पिन रीसेट रिक्वेस्ट भेजी है.%0A"
-          . "मोबाइल नंबर: $mobile";
+          . "मोबाइल नंबर: $mobile%0A%0A"
+          . "वेबसाइट: https://www.rankawatsamajrani.com/";
 
     $_SESSION['fp_message'] = "
         नंबर मिल गया ✅<br><br>

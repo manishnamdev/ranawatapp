@@ -139,27 +139,39 @@ if ($searchMobile != '') {
 </div>
 
     <!-- ⚡ QUICK ACTIONS -->
-    <div class="card shadow-sm mb-3">
+    <div class="card shadow-sm mb-3" style="border-radius: 18px; border: none;">
         <div class="card-body">
-            <div class="row g-2 text-center">
+            <div class="row g-3 text-center">
                 <div class="col-3">
-                    <a href="members_print.php" target="_blank" class="btn btn-outline-danger w-100 p-1 h-100 d-flex flex-column justify-content-center" style="font-size: 11px;">
-                        <span class="fs-5 d-block mb-1">📥</span> PDF
+                    <a href="members_print.php" target="_blank" class="text-decoration-none text-dark d-flex flex-column align-items-center">
+                        <div class="d-flex align-items-center justify-content-center" style="width: 50px; height: 50px; background: #fee2e2; border-radius: 16px; margin-bottom: 6px;">
+                            <span style="font-size: 22px;">📥</span>
+                        </div>
+                        <span style="font-size: 11px; font-weight: 600;">PDF</span>
                     </a>
                 </div>
                 <div class="col-3">
-                    <a href="voting_settings.php" class="btn btn-outline-primary w-100 p-1 h-100 d-flex flex-column justify-content-center" style="font-size: 11px;">
-                        <span class="fs-5 d-block mb-1">🗳️</span> Setting
+                    <a href="voting_settings.php" class="text-decoration-none text-dark d-flex flex-column align-items-center">
+                        <div class="d-flex align-items-center justify-content-center" style="width: 50px; height: 50px; background: #e0f2fe; border-radius: 16px; margin-bottom: 6px;">
+                            <span style="font-size: 22px;">🗳️</span>
+                        </div>
+                        <span style="font-size: 11px; font-weight: 600;">Setting</span>
                     </a>
                 </div>
                 <div class="col-3">
-                    <a href="vote_results.php" class="btn btn-outline-success w-100 p-1 h-100 d-flex flex-column justify-content-center" style="font-size: 11px;">
-                        <span class="fs-5 d-block mb-1">📊</span> Results
+                    <a href="vote_results.php" class="text-decoration-none text-dark d-flex flex-column align-items-center">
+                        <div class="d-flex align-items-center justify-content-center" style="width: 50px; height: 50px; background: #dcfce7; border-radius: 16px; margin-bottom: 6px;">
+                            <span style="font-size: 22px;">📊</span>
+                        </div>
+                        <span style="font-size: 11px; font-weight: 600;">Results</span>
                     </a>
                 </div>
                 <div class="col-3">
-                    <a href="notifications.php" class="btn btn-outline-dark w-100 p-1 h-100 d-flex flex-column justify-content-center" style="font-size: 11px;">
-                        <span class="fs-5 d-block mb-1">🔔</span> Notify
+                    <a href="notifications.php" class="text-decoration-none text-dark d-flex flex-column align-items-center">
+                        <div class="d-flex align-items-center justify-content-center" style="width: 50px; height: 50px; background: #f3f4f6; border-radius: 16px; margin-bottom: 6px;">
+                            <span style="font-size: 22px;">🔔</span>
+                        </div>
+                        <span style="font-size: 11px; font-weight: 600;">Notify</span>
                     </a>
                 </div>
             </div>
@@ -307,7 +319,7 @@ while ($m = $disabledVote->fetch_assoc()):
     <div class="section-title">🔐 Recent Admin Logins</div>
     <?php
     $adminLogs = $conn->query("
-        SELECT a.name, l.login_time, l.ip_address
+        SELECT a.username, l.login_time, l.ip_address
         FROM admin_login_logs l
         JOIN admins a ON a.id = l.admin_id
         ORDER BY l.id DESC
@@ -320,7 +332,7 @@ while ($m = $disabledVote->fetch_assoc()):
             <div class="card-body py-2">
                 <div class="d-flex justify-content-between align-items-center">
                     <div>
-                        <b><?= htmlspecialchars($log['name']); ?></b><br>
+                        <b><?= htmlspecialchars($log['username']); ?></b><br>
                         <small class="text-muted"><?= $log['login_time']; ?></small>
                     </div>
                     <span class="badge bg-secondary"><?= htmlspecialchars($log['ip_address']); ?></span>

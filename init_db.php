@@ -21,6 +21,9 @@ function initialize_database($conn) {
             gotra VARCHAR(100),
             mobile VARCHAR(20) NOT NULL,
             whatsapp_number VARCHAR(20),
+            haal_niwas VARCHAR(255),
+            mool_niwas VARCHAR(255),
+            vyavsaya VARCHAR(255),
             pin VARCHAR(255) NOT NULL,
             security_question VARCHAR(255),
             security_answer VARCHAR(255),
@@ -38,8 +41,25 @@ function initialize_database($conn) {
         "CREATE TABLE IF NOT EXISTS votes (
             id INT AUTO_INCREMENT PRIMARY KEY,
             member_id INT NOT NULL,
-            vote_option VARCHAR(50) NOT NULL,
+            poll_id INT NOT NULL,
+            poll_option_id INT NOT NULL,
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )",
+        
+        "CREATE TABLE IF NOT EXISTS polls (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            question TEXT NOT NULL,
+            is_active TINYINT(1) DEFAULT 0,
+            start_datetime DATETIME,
+            end_datetime DATETIME,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )",
+        
+        "CREATE TABLE IF NOT EXISTS poll_options (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            poll_id INT NOT NULL,
+            option_text VARCHAR(255) NOT NULL,
+            FOREIGN KEY (poll_id) REFERENCES polls(id) ON DELETE CASCADE
         )",
         
         "CREATE TABLE IF NOT EXISTS voting_settings (

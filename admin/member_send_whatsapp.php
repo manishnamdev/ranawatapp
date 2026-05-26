@@ -44,7 +44,7 @@ $update->execute();
 $message = "सम्माननीय समाज बंधु $name,\n\n";
 $message .= "आपके पोर्टल लॉगिन की जानकारी नीचे दी जा रही है —\n\n";
 $message .= "लॉगिन लिंक:\n";
-$message .= "https://lemonchiffon-giraffe-431932.hostingersite.com/\n\n";
+$message .= "https://www.rankawatsamajrani.com/\n\n";
 $message .= "यूज़र आईडी (Login ID):\n$mobile\n\n";
 $message .= "लॉगिन पिन (PIN):\n$plainPin\n\n";
 $message .= "कृपया अपने लॉगिन पिन को गोपनीय रखें एवं किसी के साथ साझा न करें।\n\n";

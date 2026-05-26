@@ -46,7 +46,7 @@ else {
 <?php if($type == "exists"): ?>
 
 <?php
-$admin_number = "919784499743"; // + remove karke country code ke sath
+$admin_number = "919602711591"; // + remove karke country code ke sath
 $whatsapp_message = urlencode(
     "नमस्ते Admin,\n\n" .
     "सदस्य मोबाइल नंबर: ".$member_mobile." \n" .

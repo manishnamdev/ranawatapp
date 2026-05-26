@@ -109,6 +109,21 @@ include "includes/front_header.php"; ?>
 </select>
 </div>
 
+<div class="form-floating mb-3">
+    <input type="text" class="form-control" name="haal_niwas" placeholder="हाल निवास">
+    <label>हाल निवास (Optional)</label>
+</div>
+
+<div class="form-floating mb-3">
+    <input type="text" class="form-control" name="mool_niwas" placeholder="मूल निवास">
+    <label>मूल निवास (Optional)</label>
+</div>
+
+<div class="form-floating mb-3">
+    <input type="text" class="form-control" name="vyavsaya" placeholder="व्यवसाय / प्रतिष्ठान">
+    <label>व्यवसाय / प्रतिष्ठान (Optional)</label>
+</div>
+
 
                         <div class="form-floating mb-3">
                             <input type="text" class="form-control" name="mobile" maxlength="10" placeholder="मोबाइल" required>
@@ -120,19 +135,7 @@ include "includes/front_header.php"; ?>
                             <label>लॉगिन पिन</label>
                         </div>
 
-                        <div class="mb-3">
-                            <label class="form-label small">सुरक्षा प्रश्न</label>
-                            <select class="form-select" name="security_question" required>
-                                <option value="">चयन करें</option>
-                                <option>आपका जन्म स्थान क्या है?</option>
-                                <option>आपके पिता का नाम क्या है?</option>
-                            </select>
-                        </div>
 
-                        <div class="form-floating mb-4">
-                            <input type="text" class="form-control" name="security_answer" placeholder="उत्तर" required>
-                            <label>उत्तर</label>
-                        </div>
 
      <div class="d-grid mt-3">
     <button class="btn btn-primary btn-lg">

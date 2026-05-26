@@ -66,6 +66,21 @@ if (!isset($_SESSION['admin_id'])) {
             </select>
         </div>
 
+        <div class="form-floating mb-3">
+            <input class="form-control" name="haal_niwas" placeholder="हाल निवास">
+            <label>हाल निवास (वैकल्पिक)</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input class="form-control" name="mool_niwas" placeholder="मूल निवास">
+            <label>मूल निवास (वैकल्पिक)</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input class="form-control" name="vyavsaya" placeholder="व्यवसाय / प्रतिष्ठान">
+            <label>व्यवसाय / प्रतिष्ठान (वैकल्पिक)</label>
+        </div>
+
         <!-- IS VERIFIED -->
         <div class="mb-3">
             <label class="form-label fw-semibold">Verified Member</label><br>

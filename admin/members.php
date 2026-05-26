@@ -44,6 +44,7 @@ $endRecord   = min($offset + $limit, $totalRecords);
 
 <?php include "./includes/admin_header.php"; ?>
 
+<div class="container mt-3">
 <div class="card shadow-sm mb-4">
     <div class="card-body">
         <div class="d-flex justify-content-between align-items-center mb-3">

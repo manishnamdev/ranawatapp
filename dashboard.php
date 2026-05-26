@@ -28,19 +28,24 @@ if ($pushCheck) {
     $pushSubscriptionCount = (int) ($pushResult['total'] ?? 0);
 }
 
-$setting = $conn->query("SELECT * FROM voting_settings WHERE id=1")->fetch_assoc();
+$poll = $conn->query("SELECT * FROM polls WHERE is_active=1 ORDER BY id DESC LIMIT 1")->fetch_assoc();
 $now = date("Y-m-d H:i:s");
 
-$voted = $conn->query("SELECT * FROM votes WHERE member_id=$id");
-$hasVoted = $voted->num_rows > 0;
-$voteData = $hasVoted ? $voted->fetch_assoc() : null;
+$hasVoted = false;
+$voteData = null;
+if ($poll) {
+    $poll_id = $poll['id'];
+    $voted = $conn->query("
+        SELECT v.*, po.option_text 
+        FROM votes v 
+        LEFT JOIN poll_options po ON v.poll_option_id = po.id 
+        WHERE v.member_id=$id AND v.poll_id=$poll_id
+    ");
+    $hasVoted = $voted->num_rows > 0;
+    $voteData = $hasVoted ? $voted->fetch_assoc() : null;
+}
 
 $family_members = $conn->query("SELECT * FROM family_members WHERE member_id=$id ORDER BY created_at ASC");
-
-$voteLabel = [
-    'yes' => 'हाँ',
-    'no'  => 'नहीं'
-];
 ?>
 
 <?php include "includes/front_header.php"; ?>
@@ -410,10 +415,12 @@ $voteLabel = [
                 
                 <form action="profile_photo_upload.php" method="POST" enctype="multipart/form-data" id="profilePhotoForm">
                     <label for="profilePhotoInput" class="profile-upload-btn">
-                        📷 Update Photo (Live Capture)
+                        🖼️ Update Photo
                     </label>
-                    <!-- capture="user" prefers the front-facing camera on mobile -->
-                    <input type="file" id="profilePhotoInput" name="profile_photo" accept="image/*" capture="user" style="display:none;" onchange="document.getElementById('profilePhotoForm').submit();">
+                    <div style="font-size: 11px; opacity: 0.85; margin-top: -10px; margin-bottom: 12px; font-weight: 500;">
+                        Max Size: 500 KB
+                    </div>
+                    <input type="file" id="profilePhotoInput" name="profile_photo" accept="image/*" style="display:none;" onchange="document.getElementById('profilePhotoForm').submit();">
                 </form>
 
                 <h1 class="profile-name"><?= htmlspecialchars($member['name']); ?></h1>
@@ -430,6 +437,27 @@ $voteLabel = [
                     <div class="profile-key">गोत्र</div>
                     <div class="profile-value"><?= htmlspecialchars($member['gotra']); ?></div>
                 </div>
+
+                <?php if (!empty($member['haal_niwas'])): ?>
+                <div class="profile-row">
+                    <div class="profile-key">हाल निवास</div>
+                    <div class="profile-value"><?= htmlspecialchars($member['haal_niwas']); ?></div>
+                </div>
+                <?php endif; ?>
+
+                <?php if (!empty($member['mool_niwas'])): ?>
+                <div class="profile-row">
+                    <div class="profile-key">मूल निवास</div>
+                    <div class="profile-value"><?= htmlspecialchars($member['mool_niwas']); ?></div>
+                </div>
+                <?php endif; ?>
+
+                <?php if (!empty($member['vyavsaya'])): ?>
+                <div class="profile-row">
+                    <div class="profile-key">व्यवसाय / प्रतिष्ठान</div>
+                    <div class="profile-value"><?= htmlspecialchars($member['vyavsaya']); ?></div>
+                </div>
+                <?php endif; ?>
             </div>
         </section>
 
@@ -611,9 +639,9 @@ $voteLabel = [
                     echo '<div class="vote-panel vote-panel-muted">
                             आपको मतदान का अधिकार नहीं है।
                           </div>';
-                } elseif ($setting['is_active'] != 1 ||
-                    $now < $setting['start_datetime'] ||
-                    $now > $setting['end_datetime']) {
+                } elseif (!$poll ||
+                    $now < $poll['start_datetime'] ||
+                    $now > $poll['end_datetime']) {
 
                     echo '<div class="vote-panel vote-panel-muted">
                             फिलहाल मतदान उपलब्ध नहीं है।
@@ -621,10 +649,10 @@ $voteLabel = [
                 } elseif ($hasVoted) {
                     echo '<div class="vote-panel vote-panel-success">
                             <b>आपका वोट दर्ज हो चुका है</b><br>
-                            आपने <span class="fw-bold">'.$voteLabel[$voteData['vote_option']].'</span> को वोट दिया है
+                            आपने <span class="fw-bold">'.htmlspecialchars($voteData['option_text']).'</span> को वोट दिया है
                           </div>';
                 } else {
-                    echo '<a href="vote.php" class="btn app-btn app-btn-primary w-100">
+                    echo '<a href="vote.php?poll_id='.$poll['id'].'" class="btn app-btn app-btn-primary w-100">
                             वोट करें
                           </a>';
                 }
