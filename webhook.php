@@ -37,4 +37,16 @@ foreach ($output as $line) {
     echo htmlspecialchars($line) . "\n";
 }
 echo "</pre>";
+
+// 6. Run Database Update Script
+if ($return_var === 0) {
+    echo "<h3>Database Update:</h3>";
+    echo "<div style='background: #e6f7ff; padding: 10px; border: 1px solid #91d5ff; border-radius: 5px;'>";
+    try {
+        include "db_update.php";
+    } catch (Exception $e) {
+        echo "<span style='color: red;'>Error updating database: " . $e->getMessage() . "</span>";
+    }
+    echo "</div>";
+}
 ?>
