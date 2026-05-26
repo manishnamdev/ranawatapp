@@ -140,25 +140,29 @@ if ($searchMobile != '') {
 
     <!-- ⚡ QUICK ACTIONS -->
     <div class="card shadow-sm mb-3">
-        <div class="card-body d-grid gap-2">
-            <a href="members_print.php" target="_blank" class="btn btn-outline-danger fw-bold">
-                📥 Download Member List (PDF)
-            </a>
-            <hr class="my-1">
-            <a href="voting_settings.php" class="btn btn-outline-primary">
-                🗳️ Voting Settings
-            </a>
-            <a href="vote_results.php" class="btn btn-outline-success">
-                📊 Vote Results
-            </a>
-        </div>
-    </div>
-
-    <div class="card shadow-sm mb-3">
-        <div class="card-body d-grid">
-            <a href="notifications.php" class="btn btn-outline-dark">
-                Browser Notifications
-            </a>
+        <div class="card-body">
+            <div class="row g-2 text-center">
+                <div class="col-3">
+                    <a href="members_print.php" target="_blank" class="btn btn-outline-danger w-100 p-1 h-100 d-flex flex-column justify-content-center" style="font-size: 11px;">
+                        <span class="fs-5 d-block mb-1">📥</span> PDF
+                    </a>
+                </div>
+                <div class="col-3">
+                    <a href="voting_settings.php" class="btn btn-outline-primary w-100 p-1 h-100 d-flex flex-column justify-content-center" style="font-size: 11px;">
+                        <span class="fs-5 d-block mb-1">🗳️</span> Setting
+                    </a>
+                </div>
+                <div class="col-3">
+                    <a href="vote_results.php" class="btn btn-outline-success w-100 p-1 h-100 d-flex flex-column justify-content-center" style="font-size: 11px;">
+                        <span class="fs-5 d-block mb-1">📊</span> Results
+                    </a>
+                </div>
+                <div class="col-3">
+                    <a href="notifications.php" class="btn btn-outline-dark w-100 p-1 h-100 d-flex flex-column justify-content-center" style="font-size: 11px;">
+                        <span class="fs-5 d-block mb-1">🔔</span> Notify
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 
