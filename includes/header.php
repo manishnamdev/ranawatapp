@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
 <title>श्री रंकण भवन रांकावत समाज संस्था, रानी स्टे.</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="../assets/images/logo.jpg">
+    <link rel="apple-touch-icon" href="../assets/images/logo.jpg">
 
     <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
