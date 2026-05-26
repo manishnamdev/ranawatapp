@@ -104,6 +104,50 @@ $voteLabel = [
     opacity: 0.92;
 }
 
+.profile-avatar-container {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 15px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    border: 3px solid rgba(255,255,255,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.profile-avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-avatar-icon {
+    font-size: 40px;
+    opacity: 0.8;
+}
+
+.profile-upload-btn {
+    display: inline-block;
+    background: rgba(255,255,255,0.25);
+    border: 1px solid rgba(255,255,255,0.4);
+    color: #fff;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: -5px;
+    margin-bottom: 15px;
+    transition: background 0.2s;
+}
+
+.profile-upload-btn:hover {
+    background: rgba(255,255,255,0.4);
+}
+
 .profile-table {
     background: rgba(255,255,255,0.16);
     border-radius: 18px;
@@ -355,7 +399,23 @@ $voteLabel = [
                 <span class="profile-badge">ID #<?= (int) $member['id']; ?></span>
             </div>
 
-            <div class="profile-heading">
+            <div class="profile-heading text-center">
+                <div class="profile-avatar-container">
+                    <?php if (!empty($member['profile_photo'])): ?>
+                        <img src="uploads/profile_photos/<?= htmlspecialchars($member['profile_photo']); ?>" class="profile-avatar-img" alt="Profile Photo">
+                    <?php else: ?>
+                        <div class="profile-avatar-icon">👤</div>
+                    <?php endif; ?>
+                </div>
+                
+                <form action="profile_photo_upload.php" method="POST" enctype="multipart/form-data" id="profilePhotoForm">
+                    <label for="profilePhotoInput" class="profile-upload-btn">
+                        📷 Update Photo (Live Capture)
+                    </label>
+                    <!-- capture="user" prefers the front-facing camera on mobile -->
+                    <input type="file" id="profilePhotoInput" name="profile_photo" accept="image/*" capture="user" style="display:none;" onchange="document.getElementById('profilePhotoForm').submit();">
+                </form>
+
                 <h1 class="profile-name"><?= htmlspecialchars($member['name']); ?></h1>
                 <p class="profile-subtitle">सदस्य प्रोफ़ाइल</p>
             </div>

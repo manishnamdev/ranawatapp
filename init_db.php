@@ -29,6 +29,7 @@ function initialize_database($conn) {
             payment_status ENUM('pending', 'uploaded', 'verified') DEFAULT 'pending',
             aadhar_front VARCHAR(255),
             aadhar_back VARCHAR(255),
+            profile_photo VARCHAR(255) DEFAULT NULL,
             is_verified TINYINT(1) DEFAULT 0,
             is_canvote TINYINT(1) DEFAULT 0,
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
