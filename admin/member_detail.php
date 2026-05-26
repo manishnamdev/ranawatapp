@@ -99,25 +99,25 @@ $family_members = $family_stmt->get_result();
 <div class="container mt-4 mb-5">
     <!-- Banner -->
     <div class="profile-banner text-center">
-        <h3 class="fw-bold mb-1"><?= htmlspecialchars($member['name']); ?></h3>
-        <p class="mb-0 opacity-75">ID #<?= $member['id']; ?> | <?= htmlspecialchars($member['mobile']); ?></p>
+        <h3 class="fw-bold mb-1"><?= htmlspecialchars($member['name'] ?? ''); ?></h3>
+        <p class="mb-0 opacity-75">ID #<?= $member['id']; ?> | <?= htmlspecialchars($member['mobile'] ?? ''); ?></p>
     </div>
 
     <!-- Basic Info -->
     <div class="profile-card">
         <div class="d-flex justify-content-between align-items-center mb-3">
             <h5 class="fw-bold mb-0 text-primary">Basic Information</h5>
-            <span class="status-badge status-<?= strtolower($member['status']); ?>"><?= htmlspecialchars($member['status']); ?></span>
+            <span class="status-badge status-<?= strtolower($member['status'] ?? 'pending'); ?>"><?= htmlspecialchars($member['status'] ?? ''); ?></span>
         </div>
         <div class="row">
             <div class="col-md-6">
                 <div class="detail-item">
                     <div class="detail-label">Nivasi</div>
-                    <div class="detail-value"><?= htmlspecialchars($member['nivasi']); ?></div>
+                    <div class="detail-value"><?= htmlspecialchars($member['nivasi'] ?? ''); ?></div>
                 </div>
                 <div class="detail-item">
                     <div class="detail-label">Gotra</div>
-                    <div class="detail-value"><?= htmlspecialchars($member['gotra']); ?></div>
+                    <div class="detail-value"><?= htmlspecialchars($member['gotra'] ?? ''); ?></div>
                 </div>
             </div>
             <div class="col-md-6">
@@ -140,24 +140,24 @@ $family_members = $family_stmt->get_result();
         <?php while ($fm = $family_members->fetch_assoc()): ?>
             <div class="col-md-6 col-lg-4">
                 <div class="card family-card h-100 p-3">
-                    <h6 class="fw-bold text-dark mb-1"><?= htmlspecialchars($fm['name']); ?></h6>
-                    <span class="badge bg-light text-secondary mb-3 d-inline-block"><?= htmlspecialchars($fm['relation']); ?></span>
+                    <h6 class="fw-bold text-dark mb-1"><?= htmlspecialchars($fm['name'] ?? ''); ?></h6>
+                    <span class="badge bg-light text-secondary mb-3 d-inline-block"><?= htmlspecialchars($fm['relation'] ?? ''); ?></span>
                     
                     <div class="d-flex justify-content-between mb-2">
                         <span class="text-muted small">Birth Year:</span>
-                        <span class="fw-semibold small"><?= htmlspecialchars($fm['birth_year']); ?></span>
+                        <span class="fw-semibold small"><?= htmlspecialchars($fm['birth_year'] ?? ''); ?></span>
                     </div>
                     <div class="d-flex justify-content-between mb-2">
                         <span class="text-muted small">Gotra:</span>
-                        <span class="fw-semibold small"><?= htmlspecialchars($fm['gotra']); ?></span>
+                        <span class="fw-semibold small"><?= htmlspecialchars($fm['gotra'] ?? ''); ?></span>
                     </div>
                     <div class="d-flex justify-content-between mb-2">
                         <span class="text-muted small">Marital:</span>
-                        <span class="fw-semibold small"><?= htmlspecialchars($fm['marital_status']); ?></span>
+                        <span class="fw-semibold small"><?= htmlspecialchars($fm['marital_status'] ?? ''); ?></span>
                     </div>
                     <div class="d-flex justify-content-between">
                         <span class="text-muted small">Education:</span>
-                        <span class="fw-semibold small"><?= htmlspecialchars($fm['education']); ?></span>
+                        <span class="fw-semibold small"><?= htmlspecialchars($fm['education'] ?? ''); ?></span>
                     </div>
                 </div>
             </div>
@@ -205,11 +205,11 @@ $family_members = $family_stmt->get_result();
                 <h6 class="fw-bold text-primary mb-3"><i class="fas fa-receipt"></i> Payment Proof</h6>
                 <div class="text-center">
                     <?php if ($member['payment_screenshot']): ?>
-                        <a href="../<?= htmlspecialchars($member['payment_screenshot']); ?>" target="_blank">
-                            <img src="../<?= htmlspecialchars($member['payment_screenshot']); ?>" class="doc-img" style="max-height: 150px;" alt="Payment">
+                        <a href="../<?= htmlspecialchars($member['payment_screenshot'] ?? ''); ?>" target="_blank">
+                            <img src="../<?= htmlspecialchars($member['payment_screenshot'] ?? ''); ?>" class="doc-img" style="max-height: 150px;" alt="Payment">
                         </a>
                         <div class="mt-2">
-                            <span class="status-badge status-<?= strtolower($member['payment_status']); ?>"><?= htmlspecialchars($member['payment_status']); ?></span>
+                            <span class="status-badge status-<?= strtolower($member['payment_status'] ?? 'pending'); ?>"><?= htmlspecialchars($member['payment_status'] ?? ''); ?></span>
                         </div>
                     <?php else: ?>
                         <div class="p-4 bg-light rounded-3 text-muted small border">
