@@ -47,22 +47,6 @@ if ($poll) {
 
 $family_members = $conn->query("SELECT * FROM family_members WHERE member_id=$id ORDER BY created_at ASC");
 
-// Handle Search by Niwas
-$search_niwas = $_GET['search_niwas'] ?? '';
-$searchResult = null;
-if ($search_niwas != '') {
-    $stmt = $conn->prepare("
-        SELECT m.id, m.name, m.profile_photo, 
-               (SELECT COUNT(*) FROM family_members fm WHERE fm.member_id = m.id) as fam_count
-        FROM members m 
-        WHERE m.nivasi = ? AND m.status = 'approved'
-        ORDER BY m.name ASC
-    ");
-    $stmt->bind_param("s", $search_niwas);
-    $stmt->execute();
-    $searchResult = $stmt->get_result();
-}
-
 // Fetch Niwas list for dropdown
 $niwasList = $conn->query("SELECT name FROM niwas ORDER BY name ASC");
 ?>
@@ -660,12 +644,12 @@ $niwasList = $conn->query("SELECT name FROM niwas ORDER BY name ASC");
                     </div>
                 </div>
 
-                <form method="GET" class="mb-4">
+                <form action="member_search.php" method="GET" class="mb-4">
                     <div class="input-group">
                         <select name="search_niwas" class="form-select" required>
                             <option value="">मूल निवास चुनें</option>
                             <?php while ($n = $niwasList->fetch_assoc()): ?>
-                                <option value="<?= htmlspecialchars($n['name']); ?>" <?= ($search_niwas == $n['name']) ? 'selected' : ''; ?>>
+                                <option value="<?= htmlspecialchars($n['name']); ?>">
                                     <?= htmlspecialchars($n['name']); ?>
                                 </option>
                             <?php endwhile; ?>
@@ -673,47 +657,6 @@ $niwasList = $conn->query("SELECT name FROM niwas ORDER BY name ASC");
                         <button type="submit" class="btn btn-primary px-3">खोजें</button>
                     </div>
                 </form>
-
-                <?php if ($searchResult !== null): ?>
-                    <?php if ($searchResult->num_rows > 0): ?>
-                        <div class="table-responsive">
-                            <table class="table table-bordered table-sm small align-middle">
-                                <thead class="table-light">
-                                    <tr>
-                                        <th>फोटो</th>
-                                        <th>नाम</th>
-                                        <th>कुल सदस्य</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php while ($res = $searchResult->fetch_assoc()): ?>
-                                        <tr>
-                                            <td>
-                                                <?php if (!empty($res['profile_photo'])): ?>
-                                                    <img src="uploads/profile_photos/<?= htmlspecialchars($res['profile_photo']); ?>" style="width:40px;height:40px;object-fit:cover;border-radius:50%;">
-                                                <?php else: ?>
-                                                    <div style="width:40px;height:40px;border-radius:50%;background:#eee;display:flex;align-items:center;justify-content:center;font-size:18px;">👤</div>
-                                                <?php endif; ?>
-                                            </td>
-                                            <td class="fw-bold"><?= htmlspecialchars($res['name']); ?></td>
-                                            <td><?= (int)$res['fam_count'] + 1; ?></td>
-                                        </tr>
-                                    <?php endwhile; ?>
-                                </tbody>
-                            </table>
-                        </div>
-                    <?php else: ?>
-                        <div class="alert alert-warning small text-center mb-3">
-                            इस मूल निवास से अभी कोई सदस्य नहीं जुड़ा है।
-                        </div>
-                        <?php 
-                        $shareText = rawurlencode("रांकावत समाज रानी ऐप से जुड़ें और समाज को मजबूत बनाएं। अभी रजिस्टर करें: https://www.rankawatsamajrani.com/");
-                        ?>
-                        <a href="https://api.whatsapp.com/send?text=<?= $shareText; ?>" target="_blank" class="app-btn w-100 d-block text-center text-decoration-none" style="background:#25D366;color:#fff;">
-                            📲 WhatsApp पर ऐप शेयर करें
-                        </a>
-                    <?php endif; ?>
-                <?php endif; ?>
             </div>
         </section>
 
