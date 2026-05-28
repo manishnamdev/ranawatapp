@@ -47,6 +47,9 @@ if ($conn->query($sql_push)) {
 // 3. Update members table with missing columns
 $missing_columns = [
     "nivasi" => "VARCHAR(100)",
+    "mool_niwas" => "VARCHAR(100)",
+    "haal_niwas" => "VARCHAR(100)",
+    "vyavsaya" => "VARCHAR(255)",
     "gotra" => "VARCHAR(100)",
     "whatsapp_number" => "VARCHAR(20)",
     "security_question" => "VARCHAR(255)",
@@ -69,6 +72,16 @@ foreach ($missing_columns as $col => $type) {
         } else {
             echo "<p>❌ Error adding column $col: " . $conn->error . "</p>";
         }
+    }
+}
+
+// 4. Update admin_login_logs table
+$check_logout = $conn->query("SHOW COLUMNS FROM admin_login_logs LIKE 'logout_time'");
+if ($check_logout && $check_logout->num_rows == 0) {
+    if ($conn->query("ALTER TABLE admin_login_logs ADD COLUMN logout_time DATETIME NULL")) {
+        echo "<p>✅ Added missing column <b>logout_time</b> to admin_login_logs table.</p>";
+    } else {
+        echo "<p>❌ Error adding logout_time: " . $conn->error . "</p>";
     }
 }
 
