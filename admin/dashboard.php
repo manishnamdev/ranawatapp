@@ -175,7 +175,7 @@ if ($searchMobile != '') {
                     </a>
                 </div>
                 
-                <div class="col-3 mt-3">
+                <div class="col-3">
                     <a href="gotra_manager.php" class="text-decoration-none text-dark d-flex flex-column align-items-center">
                         <div class="d-flex align-items-center justify-content-center" style="width: 50px; height: 50px; background: #fff7ed; border-radius: 16px; margin-bottom: 6px;">
                             <span style="font-size: 22px;">🕉️</span>
@@ -183,7 +183,7 @@ if ($searchMobile != '') {
                         <span style="font-size: 11px; font-weight: 600;">Gotras</span>
                     </a>
                 </div>
-                <div class="col-3 mt-3">
+                <div class="col-3">
                     <a href="niwas_manager.php" class="text-decoration-none text-dark d-flex flex-column align-items-center">
                         <div class="d-flex align-items-center justify-content-center" style="width: 50px; height: 50px; background: #faf5ff; border-radius: 16px; margin-bottom: 6px;">
                             <span style="font-size: 22px;">🏠</span>
@@ -191,7 +191,7 @@ if ($searchMobile != '') {
                         <span style="font-size: 11px; font-weight: 600;">Niwas</span>
                     </a>
                 </div>
-                <div class="col-3 mt-3">
+                <div class="col-3">
                     <a href="suchna_manager.php" class="text-decoration-none text-dark d-flex flex-column align-items-center">
                         <div class="d-flex align-items-center justify-content-center" style="width: 50px; height: 50px; background: #ecfdf5; border-radius: 16px; margin-bottom: 6px;">
                             <span style="font-size: 22px;">📢</span>
