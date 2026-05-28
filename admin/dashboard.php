@@ -173,7 +173,9 @@ if ($searchMobile != '') {
                         </div>
                         <span style="font-size: 11px; font-weight: 600;">Notify</span>
                     </a>
-                    <div class="col-3 mt-3">
+                </div>
+                
+                <div class="col-3 mt-3">
                     <a href="gotra_manager.php" class="text-decoration-none text-dark d-flex flex-column align-items-center">
                         <div class="d-flex align-items-center justify-content-center" style="width: 50px; height: 50px; background: #fff7ed; border-radius: 16px; margin-bottom: 6px;">
                             <span style="font-size: 22px;">🕉️</span>
