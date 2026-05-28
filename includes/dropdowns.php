@@ -1,32 +1,25 @@
 <?php
 /* =========================
-   GLOBAL DROPDOWN LISTS
+   GLOBAL DROPDOWN LISTS (DB Driven)
    ========================= */
+$GOTRA_LIST = [];
+$NIVASI_LIST = [];
 
-
-
-/* GOTRA */
-$GOTRA_LIST = [
-    "गोयल",
-    "रामीणा",
-    "मनावत",
-    "नानेचा",
-    "माधावत",
-    "रोटांगर",
-    "नागोरा",
-    "गोरवाल",
-    "भारद्वाज",
-    "बोराणा",
-    "टांक",
-    "उदेशा",
-    "धनेरिया",
-    "अज्ञात"
-];
-
-/* NIVASI */
-$NIVASI_LIST = [
-    "पाली", "खौड़", "जवाली", "जैतपुरा", "ढोला", "माण्डल", "चांगवा", "चांचौड़ी", "नाडोल", "बिजोवा",
-    "रानी स्टेशन", "फालना", "रानीगांव", "बिरामी", "साण्डेराव", "सिन्दरू", "सुमेरपुर", "खिमाड़ा", "कोसेलाव", "बाबागांव",
-    "गुड़िया", "पावा", "पिचावा", "बिठुड़ा", "चाणौद", "शिवगंज", "सिरोही", "सादड़ी", "सुथारो का गुड़ा", "राजपुरा",
-    "बाली", "मुण्डारा", "घाणेराव", "देसूरी", "चारभुजा", "अज्ञात"
-];
+if (isset($conn)) {
+    // Fetch Gotras
+    $res = $conn->query("SELECT name FROM gotras ORDER BY name ASC");
+    if ($res) {
+        while ($row = $res->fetch_assoc()) {
+            $GOTRA_LIST[] = $row['name'];
+        }
+    }
+    
+    // Fetch Niwas
+    $res2 = $conn->query("SELECT name FROM niwas ORDER BY name ASC");
+    if ($res2) {
+        while ($row = $res2->fetch_assoc()) {
+            $NIVASI_LIST[] = $row['name'];
+        }
+    }
+}
+?>

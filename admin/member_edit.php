@@ -3,7 +3,6 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 session_start();
 include "../config/db.php";
-include "../includes/dropdowns.php";
 
 if (!isset($_SESSION['admin_id'])) {
     header("Location: login.php");
@@ -18,7 +17,6 @@ if (!$member) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
     $stmt = $conn->prepare("
         UPDATE members SET
             name=?,
@@ -29,10 +27,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             payment_status=?,
             whatsapp_number=?,
             haal_niwas=?,
-            mool_niwas=?,
             vyavsaya=?,
             is_verified=?,
-            is_canvote=?
+            is_canvote=?,
+            membership_type=?
         WHERE id=?
     ");
 
@@ -44,13 +42,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $payment_status = $_POST['payment_status'];
     $whatsapp_number = $_POST['whatsapp_number'] ?? '';
     $haal_niwas = $_POST['haal_niwas'] ?? '';
-    $mool_niwas = $_POST['mool_niwas'] ?? '';
     $vyavsaya = $_POST['vyavsaya'] ?? '';
-    $is_verified = $_POST['is_verified'];
-    $is_canvote = $_POST['is_canvote'];
+    $is_verified = (int)$_POST['is_verified'];
+    $is_canvote = (int)$_POST['is_canvote'];
+    $membership_type = $_POST['membership_type'] ?? 'Yearly';
 
     $stmt->bind_param(
-        "ssssssssssiii",
+        "sssssssssiisi",
         $name,
         $mobile,
         $nivasi,
@@ -59,17 +57,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $payment_status,
         $whatsapp_number,
         $haal_niwas,
-        $mool_niwas,
         $vyavsaya,
         $is_verified,
         $is_canvote,
+        $membership_type,
         $id
     );
 
-    $stmt->execute();
+    if (!$stmt->execute()) {
+        die("Error updating: " . $stmt->error);
+    }
+    
     header("Location: member_detail.php?id=".$id);
     exit;
 }
+
+$gotrasQuery = $conn->query("SELECT name FROM gotras ORDER BY name ASC");
+$niwasQuery = $conn->query("SELECT name FROM niwas ORDER BY name ASC");
 ?>
 
 <?php include "includes/admin_header.php"; ?>
@@ -81,43 +85,41 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <!-- BASIC INFO -->
         <div class="form-floating mb-3">
-            <input class="form-control" name="name" value="<?= $member['name']; ?>" required>
+            <input class="form-control" name="name" value="<?= htmlspecialchars($member['name']); ?>" required>
             <label>नाम</label>
         </div>
 
         <div class="form-floating mb-3">
-            <input class="form-control" name="mobile" value="<?= $member['mobile']; ?>" required>
+            <input class="form-control" name="mobile" value="<?= htmlspecialchars($member['mobile']); ?>" required>
             <label>मोबाइल नंबर</label>
         </div>
 
         <div class="form-floating mb-3">
-            <input class="form-control" name="whatsapp_number" value="<?= $member['whatsapp_number']; ?>">
+            <input class="form-control" name="whatsapp_number" value="<?= htmlspecialchars($member['whatsapp_number'] ?? ''); ?>">
             <label>व्हाट्सएप नंबर (वैकल्पिक)</label>
         </div>
 
         <!-- NIVASI -->
         <div class="mb-3">
-            <label class="form-label">निवासी</label>
+            <label class="form-label">मूल निवास (Mool Niwas)</label>
             <select name="nivasi" class="form-select" required>
-                <?php foreach ($NIVASI_LIST as $n): ?>
-                    <option value="<?= $n; ?>" <?= ($member['nivasi']==$n)?'selected':''; ?>>
-                        <?= $n; ?>
+                <?php while ($n = $niwasQuery->fetch_assoc()): ?>
+                    <option value="<?= htmlspecialchars($n['name']); ?>" <?= ($member['nivasi']==$n['name'])?'selected':''; ?>>
+                        <?= htmlspecialchars($n['name']); ?>
                     </option>
-                <?php endforeach; ?>
+                <?php endwhile; ?>
             </select>
         </div>
 
-
-
         <!-- GOTRA -->
         <div class="mb-3">
-            <label class="form-label">गोत्र</label>
+            <label class="form-label">गोत्र (Gotra)</label>
             <select name="gotra" class="form-select" required>
-                <?php foreach ($GOTRA_LIST as $g): ?>
-                    <option value="<?= $g; ?>" <?= ($member['gotra']==$g)?'selected':''; ?>>
-                        <?= $g; ?>
+                <?php while ($g = $gotrasQuery->fetch_assoc()): ?>
+                    <option value="<?= htmlspecialchars($g['name']); ?>" <?= ($member['gotra']==$g['name'])?'selected':''; ?>>
+                        <?= htmlspecialchars($g['name']); ?>
                     </option>
-                <?php endforeach; ?>
+                <?php endwhile; ?>
             </select>
         </div>
 
@@ -127,16 +129,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
 
         <div class="form-floating mb-3">
-            <input class="form-control" name="mool_niwas" value="<?= htmlspecialchars($member['mool_niwas'] ?? ''); ?>" placeholder="मूल निवास">
-            <label>मूल निवास (वैकल्पिक)</label>
-        </div>
-
-        <div class="form-floating mb-3">
             <input class="form-control" name="vyavsaya" value="<?= htmlspecialchars($member['vyavsaya'] ?? ''); ?>" placeholder="व्यवसाय / प्रतिष्ठान">
             <label>व्यवसाय / प्रतिष्ठान (वैकल्पिक)</label>
         </div>
 
         <hr>
+
+        <!-- MEMBERSHIP TYPE -->
+        <div class="mb-3">
+            <label class="form-label fw-semibold">Membership Type</label>
+            <select name="membership_type" class="form-select">
+                <option value="Yearly"  <?= (($member['membership_type'] ?? '')=='Yearly')?'selected':''; ?>>Yearly</option>
+                <option value="Lifetime" <?= (($member['membership_type'] ?? '')=='Lifetime')?'selected':''; ?>>Lifetime</option>
+            </select>
+        </div>
 
         <!-- MEMBERSHIP STATUS -->
         <div class="mb-3">

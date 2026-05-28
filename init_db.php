@@ -35,6 +35,7 @@ function initialize_database($conn) {
             profile_photo VARCHAR(255) DEFAULT NULL,
             is_verified TINYINT(1) DEFAULT 0,
             is_canvote TINYINT(1) DEFAULT 0,
+            membership_type ENUM('Yearly', 'Lifetime') DEFAULT 'Yearly',
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )",
         
@@ -66,7 +67,34 @@ function initialize_database($conn) {
             id INT AUTO_INCREMENT PRIMARY KEY,
             is_active TINYINT(1) DEFAULT 0,
             start_datetime DATETIME,
-            end_datetime DATETIME
+            end_datetime DATETIME,
+            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+        )",
+        
+        "CREATE TABLE IF NOT EXISTS gotras (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            name VARCHAR(255) NOT NULL UNIQUE
+        )",
+        
+        "CREATE TABLE IF NOT EXISTS niwas (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            name VARCHAR(255) NOT NULL UNIQUE
+        )",
+        
+        "CREATE TABLE IF NOT EXISTS suchnas (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            title VARCHAR(255) NOT NULL,
+            short_description TEXT NOT NULL,
+            thumb_image VARCHAR(255) NOT NULL,
+            datetime DATETIME NOT NULL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )",
+        
+        "CREATE TABLE IF NOT EXISTS suchna_images (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            suchna_id INT NOT NULL,
+            image_path VARCHAR(255) NOT NULL,
+            FOREIGN KEY (suchna_id) REFERENCES suchnas(id) ON DELETE CASCADE
         )",
         
         "CREATE TABLE IF NOT EXISTS admin_login_logs (

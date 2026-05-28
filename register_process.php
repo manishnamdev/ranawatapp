@@ -12,7 +12,6 @@ $nivasi = trim($_POST['nivasi']);
 $gotra = $_POST['gotra'];
 $mobile = trim($_POST['mobile']);
 $haal_niwas = isset($_POST['haal_niwas']) ? trim($_POST['haal_niwas']) : '';
-$mool_niwas = isset($_POST['mool_niwas']) ? trim($_POST['mool_niwas']) : '';
 $vyavsaya = isset($_POST['vyavsaya']) ? trim($_POST['vyavsaya']) : '';
 $pin = $_POST['pin'];
 
@@ -31,14 +30,14 @@ $hashed_pin = password_hash($pin, PASSWORD_DEFAULT);
 
 $stmt = $conn->prepare("
 INSERT INTO members
-(name,nivasi,gotra,mobile,haal_niwas,mool_niwas,vyavsaya,pin)
-VALUES (?,?,?,?,?,?,?,?)
+(name,nivasi,gotra,mobile,haal_niwas,vyavsaya,pin)
+VALUES (?,?,?,?,?,?,?)
 ");
 
 $stmt->bind_param(
-    "ssssssss",
+    "sssssss",
     $name,$nivasi,$gotra,
-    $mobile,$haal_niwas,$mool_niwas,$vyavsaya,$hashed_pin
+    $mobile,$haal_niwas,$vyavsaya,$hashed_pin
 );
 
 if ($stmt->execute()) {

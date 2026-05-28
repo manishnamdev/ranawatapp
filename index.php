@@ -1,11 +1,15 @@
 <?php
 session_start();
+include "config/db.php";
 
 // Agar member login hai -> dashboard
 if (isset($_SESSION['member_id'])) {
     header("Location: dashboard.php");
     exit;
 }
+
+// Fetch latest 3 notices (suchnas)
+$suchnas = $conn->query("SELECT * FROM suchnas ORDER BY id DESC LIMIT 3");
 ?>
 <!DOCTYPE html>
 <html lang="hi">
@@ -182,6 +186,44 @@ if (isset($_SESSION['member_id'])) {
             display: block;
             border-radius: 16px;
         }
+        .suchna-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 12px;
+            margin-bottom: 12px;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            text-decoration: none;
+            color: inherit;
+            border: 1px solid #eee;
+        }
+
+        .suchna-thumb {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .suchna-content h4 {
+            margin: 0 0 4px 0;
+            font-size: 15px;
+            font-weight: 700;
+            color: #1f2937;
+        }
+
+        .suchna-content p {
+            margin: 0;
+            font-size: 13px;
+            color: #6b7280;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
     </style>
 </head>
 
@@ -195,6 +237,32 @@ if (isset($_SESSION['member_id'])) {
     </div>
 
     <div class="container">
+        <?php if ($suchnas && $suchnas->num_rows > 0): ?>
+        <div class="card mb-4" style="background: transparent; box-shadow: none; padding: 0;">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+                <h3 style="margin: 0; font-size: 18px; text-align: left; color: #1f2937;">नवीनतम सूचनाएं (Latest Notices)</h3>
+            </div>
+            
+            <?php while ($s = $suchnas->fetch_assoc()): ?>
+            <?php
+                $words = explode(" ", strip_tags($s['short_description']));
+                $short_desc = implode(" ", array_slice($words, 0, 20)) . (count($words) > 20 ? "..." : "");
+            ?>
+            <a href="suchna_detail.php?id=<?= $s['id'] ?>" class="suchna-card">
+                <img src="uploads/suchnas/<?= htmlspecialchars($s['thumb_image']) ?>" alt="Notice Thumb" class="suchna-thumb">
+                <div class="suchna-content">
+                    <h4><?= htmlspecialchars($s['title']) ?></h4>
+                    <p><?= htmlspecialchars($short_desc) ?></p>
+                    <span style="font-size: 12px; color: #3b82f6; font-weight: 600; display: inline-block; margin-top: 4px;">View More &rarr;</span>
+                </div>
+            </a>
+            <?php endwhile; ?>
+            
+            <div style="text-align: center; margin-top: 12px;">
+                <a href="suchnas.php" style="color: #3b82f6; font-weight: 600; text-decoration: none;">सभी सूचनाएं देखें (View All) &rarr;</a>
+            </div>
+        </div>
+        <?php endif; ?>
         <div class="card">
             <div class="top-image">
                 <img src="assets/images/banner.jpeg" alt="समाज सेवा समिति">
@@ -228,6 +296,8 @@ if (isset($_SESSION['member_id'])) {
                 </a>
             </div>
         </div>
+
+
 
         <div class="footer">
             © श्री रंकण भवन रांकावत समाज संस्था<br>

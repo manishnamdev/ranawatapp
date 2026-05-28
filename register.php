@@ -5,6 +5,7 @@ if (!isset($_SESSION['rules_agreed'])) {
     header("Location: rules.php");
     exit;
 }
+include "config/db.php";
 include "includes/dropdowns.php";
 include "includes/front_header.php"; ?>
 <style>
@@ -81,18 +82,18 @@ include "includes/front_header.php"; ?>
                     <form method="post" action="register_process.php">
 
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" name="name" placeholder="नाम" required>
-                            <label>सदस्य का पूरा नाम</label>
+                            <input type="text" class="form-control" name="name" placeholder="विनोद कुमार पुत्र श्री राधेश्याम जी" required>
+                            <label>सदस्य का पूरा नाम (उदा. विनोद कुमार पुत्र श्री राधेश्याम जी)</label>
                         </div>
 
                         <div class=" mb-3">
                         
-                           <label class="form-label small">निवासी</label>
+                            <label class="form-label small">मूल निवास (Mool Niwas)</label>
 
                                    <select name="nivasi" class="form-select" required>
-    <option value="">निवासी चुनें</option>
+    <option value="">मूल निवास चुनें</option>
     <?php foreach ($NIVASI_LIST as $t): ?>
-        <option value="<?= $t; ?>"><?= $t; ?></option>
+        <option value="<?= htmlspecialchars($t); ?>"><?= htmlspecialchars($t); ?></option>
     <?php endforeach; ?>
 </select>
     
@@ -104,7 +105,7 @@ include "includes/front_header.php"; ?>
             <select name="gotra" class="form-select" required>
     <option value=""> गोत्र चुनें</option>
     <?php foreach ($GOTRA_LIST as $g): ?>
-        <option value="<?= $g; ?>"><?= $g; ?></option>
+        <option value="<?= htmlspecialchars($g); ?>"><?= htmlspecialchars($g); ?></option>
     <?php endforeach; ?>
 </select>
 </div>
@@ -114,10 +115,7 @@ include "includes/front_header.php"; ?>
     <label>हाल निवास (Optional)</label>
 </div>
 
-<div class="form-floating mb-3">
-    <input type="text" class="form-control" name="mool_niwas" placeholder="मूल निवास">
-    <label>मूल निवास (Optional)</label>
-</div>
+
 
 <div class="form-floating mb-3">
     <input type="text" class="form-control" name="vyavsaya" placeholder="व्यवसाय / प्रतिष्ठान">
