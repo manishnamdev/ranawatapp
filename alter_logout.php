@@ -2,8 +2,8 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-// Force local DB for CLI
-$_SERVER['HTTP_HOST'] = 'localhost:8000';
+// Force local DB for CLI (disabled)
+// $_SERVER['HTTP_HOST'] = 'localhost:8000';
 require_once __DIR__ . '/config/db.php';
 
 echo "<pre>";
