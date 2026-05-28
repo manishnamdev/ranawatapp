@@ -200,7 +200,6 @@ if ($searchMobile != '') {
                     </a>
                 </div>
             </div>
-            </div>
         </div>
     </div>
 
@@ -263,15 +262,10 @@ if ($searchMobile != '') {
             <div class="card-body">
                 <b><?= $m['name']; ?></b><br>
                 <small><?= $m['mobile']; ?></small>
-                <div class="mt-2">
+                <div class="mt-2 d-flex gap-2 flex-wrap">
                     <a href="member_detail.php?id=<?= $m['id']; ?>" class="btn btn-secondary btn-sm">Detail</a>
-                <a href="member_edit.php?id=<?= $m['id']; ?>" class="btn btn-warning btn-sm">
-        ✏️ Edit
-    </a>
-                    <a href="member_send_whatsapp.php?id=<?= $m['id']; ?>"
-   class="btn btn-success btn-sm">
-   📲 Send Login
-</a>
+                    <a href="member_edit.php?id=<?= $m['id']; ?>" class="btn btn-warning btn-sm">✏️ Edit</a>
+                    <a href="member_send_whatsapp.php?id=<?= $m['id']; ?>" class="btn btn-success btn-sm">📲 Send Login</a>
                 </div>
                 
             </div>
