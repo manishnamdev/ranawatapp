@@ -19,6 +19,7 @@ $whatsapp_number = trim($_POST['whatsapp_number'] ?? '');
 $haal_niwas = trim($_POST['haal_niwas'] ?? '');
 $mool_niwas = trim($_POST['mool_niwas'] ?? '');
 $vyavsaya = trim($_POST['vyavsaya'] ?? '');
+$membership_type = $_POST['membership_type'] ?? 'Yearly';
 
 $is_verified = isset($_POST['is_verified']) ? (int)$_POST['is_verified'] : 0;
 $is_canvote  = isset($_POST['is_canvote'])  ? (int)$_POST['is_canvote']  : 0;
@@ -49,15 +50,15 @@ $hashed_pin = password_hash($pin, PASSWORD_DEFAULT);
 // ✅ CORRECT INSERT QUERY
 $stmt = $conn->prepare("
     INSERT INTO members
-    (name, mobile, whatsapp_number, haal_niwas, mool_niwas, vyavsaya, pin, nivasi, gotra, status, is_verified, is_canvote)
-    VALUES (?,?,?,?,?,?,?,?,?,'approved',?,?)
+    (name, mobile, whatsapp_number, haal_niwas, mool_niwas, vyavsaya, pin, nivasi, gotra, membership_type, status, is_verified, is_canvote)
+    VALUES (?,?,?,?,?,?,?,?,?,?,'approved',?,?)
 ");
 
 if (!$stmt) {
     die("Prepare failed: " . $conn->error);
 }
 
-// ✅ CORRECT bind_param (10 strings + 2 ints)
+// ✅ CORRECT bind_param (10 strings + 2 ints = 12 total)
 $stmt->bind_param(
     "ssssssssssii",
     $name,
@@ -69,6 +70,7 @@ $stmt->bind_param(
     $hashed_pin,
     $nivasi,
     $gotra,
+    $membership_type,
     $is_verified,
     $is_canvote
 );

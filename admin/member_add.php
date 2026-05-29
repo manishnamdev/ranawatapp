@@ -65,6 +65,15 @@ if (!isset($_SESSION['admin_id'])) {
                 <?php endforeach; ?>
             </select>
         </div>
+        
+        <!-- MEMBERSHIP TYPE -->
+        <div class="mb-3">
+            <label class="form-label">सदस्यता का प्रकार (Membership Type)</label>
+            <select name="membership_type" class="form-select" required>
+                <option value="Yearly">Yearly (वार्षिक)</option>
+                <option value="Lifetime">Lifetime (आजीवन)</option>
+            </select>
+        </div>
 
         <div class="form-floating mb-3">
             <input class="form-control" name="haal_niwas" placeholder="हाल निवास">
