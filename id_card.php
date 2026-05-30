@@ -55,6 +55,7 @@ $formatted_id = sprintf("RS-%04d", $member['id']);
             top: 24.5%; /* Adjusted to center in the white circle */
             left: 50%;
             transform: translateX(-50%);
+            margin-top: -10px; /* Moved 10px up as requested */
             width: 160px;
             height: 160px;
             border-radius: 50%;
