@@ -154,9 +154,6 @@ $formatted_id = sprintf("RS-%04d", $member['id']);
 
                 <div class="info-label">निवास:</div>
                 <div><?= htmlspecialchars($member['nivasi']) ?></div>
-
-                <div class="info-label">सदस्यता:</div>
-                <div><?= htmlspecialchars($member['membership_type'] ?? 'Yearly') ?> Member</div>
             </div>
         </div>
 

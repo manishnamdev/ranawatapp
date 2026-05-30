@@ -448,12 +448,7 @@ $niwasList = $conn->query("SELECT name FROM niwas ORDER BY name ASC");
                 </div>
                 <?php endif; ?>
 
-                <?php if (!empty($member['mool_niwas'])): ?>
-                <div class="profile-row">
-                    <div class="profile-key">मूल निवास</div>
-                    <div class="profile-value"><?= htmlspecialchars($member['mool_niwas']); ?></div>
-                </div>
-                <?php endif; ?>
+
 
                 <?php if (!empty($member['vyavsaya'])): ?>
                 <div class="profile-row">
@@ -569,22 +564,13 @@ $niwasList = $conn->query("SELECT name FROM niwas ORDER BY name ASC");
                     <span class="section-icon section-icon-vote">📱</span>
                     <div>
                         <h2 class="section-title">प्रोफ़ाइल सेटिंग्स</h2>
-                        <p class="section-desc">अपना व्हाट्सएप नंबर अपडेट करें</p>
+                        <p class="section-desc">अपनी जानकारी, पिन या व्हाट्सएप नंबर अपडेट करें</p>
                     </div>
                 </div>
 
-                <form action="update_profile_process.php" method="POST">
-                    <div class="mb-3">
-                        <label class="form-label small fw-bold">व्हाट्सएप नंबर (पासवर्ड प्राप्त करने हेतु)</label>
-                        <input type="text" name="whatsapp_number" class="form-control" 
-                               value="<?= htmlspecialchars($member['whatsapp_number'] ?? ''); ?>" 
-                               placeholder="91XXXXXXXXXX">
-                    </div>
-
-                    <button type="submit" class="app-btn app-btn-primary w-100">
-                        अपडेट करें
-                    </button>
-                </form>
+                <a href="profile_edit.php" class="app-btn app-btn-primary w-100 d-block text-center text-decoration-none">
+                    ✏️ प्रोफ़ाइल अपडेट करें (Edit Profile)
+                </a>
             </div>
         </section>
 
@@ -608,6 +594,7 @@ $niwasList = $conn->query("SELECT name FROM niwas ORDER BY name ASC");
                                     <th>जन्म वर्ष</th>
                                     <th>गोत्र</th>
                                     <th>शिक्षा</th>
+                                    <th>एक्शन</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -618,6 +605,12 @@ $niwasList = $conn->query("SELECT name FROM niwas ORDER BY name ASC");
                                         <td><?= htmlspecialchars($fm['birth_year']); ?></td>
                                         <td><?= htmlspecialchars($fm['gotra']); ?></td>
                                         <td><?= htmlspecialchars($fm['education']); ?></td>
+                                        <td>
+                                            <div class="d-flex gap-1">
+                                                <a href="family_edit.php?id=<?= $fm['id'] ?>" class="btn btn-sm btn-outline-primary px-2 py-1" style="font-size:12px;">✏️</a>
+                                                <a href="family_delete.php?id=<?= $fm['id'] ?>" class="btn btn-sm btn-outline-danger px-2 py-1" style="font-size:12px;" onclick="return confirm('क्या आप वाकई इस परिवार के सदस्य को हटाना चाहते हैं?')">🗑️</a>
+                                            </div>
+                                        </td>
                                     </tr>
                                 <?php endwhile; ?>
                             </tbody>

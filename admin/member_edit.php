@@ -29,8 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             haal_niwas=?,
             vyavsaya=?,
             is_verified=?,
-            is_canvote=?,
-            membership_type=?
+            is_canvote=?
         WHERE id=?
     ");
 
@@ -45,10 +44,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $vyavsaya = $_POST['vyavsaya'] ?? '';
     $is_verified = (int)$_POST['is_verified'];
     $is_canvote = (int)$_POST['is_canvote'];
-    $membership_type = $_POST['membership_type'] ?? 'Yearly';
 
     $stmt->bind_param(
-        "sssssssssiisi",
+        "sssssssssiii",
         $name,
         $mobile,
         $nivasi,
@@ -60,7 +58,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $vyavsaya,
         $is_verified,
         $is_canvote,
-        $membership_type,
         $id
     );
 
@@ -134,15 +131,6 @@ $niwasQuery = $conn->query("SELECT name FROM niwas ORDER BY name ASC");
         </div>
 
         <hr>
-
-        <!-- MEMBERSHIP TYPE -->
-        <div class="mb-3">
-            <label class="form-label fw-semibold">Membership Type</label>
-            <select name="membership_type" class="form-select">
-                <option value="Yearly"  <?= (($member['membership_type'] ?? '')=='Yearly')?'selected':''; ?>>Yearly</option>
-                <option value="Lifetime" <?= (($member['membership_type'] ?? '')=='Lifetime')?'selected':''; ?>>Lifetime</option>
-            </select>
-        </div>
 
         <!-- MEMBERSHIP STATUS -->
         <div class="mb-3">
