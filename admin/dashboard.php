@@ -242,10 +242,11 @@ if ($searchMobile != '') {
                 <b><?= $m['name']; ?></b><br>
                 <small><?= $m['mobile']; ?></small>
 
-                <div class="mt-2 d-flex gap-2">
+                <div class="mt-2 d-flex gap-2 flex-wrap">
                     <a href="member_action.php?id=<?= $m['id']; ?>&action=approved" class="btn btn-success btn-sm">Approve</a>
                     <a href="member_action.php?id=<?= $m['id']; ?>&action=rejected" class="btn btn-danger btn-sm">Reject</a>
                     <a href="member_detail.php?id=<?= $m['id']; ?>" class="btn btn-secondary btn-sm">Detail</a>
+                    <a href="member_delete.php?id=<?= $m['id']; ?>" class="btn btn-dark btn-sm" onclick="return confirm('क्या आप वाकई इस सदस्य को हमेशा के लिए हटाना चाहते हैं?');">🗑️ Delete</a>
                 </div>
             </div>
         </div>
@@ -327,9 +328,10 @@ while ($m = $disabledVote->fetch_assoc()):
             <div class="card-body">
                 <b><?= $m['name']; ?></b><br>
                 <small><?= $m['mobile']; ?></small>
-                <div class="mt-2 d-flex gap-2">
+                <div class="mt-2 d-flex gap-2 flex-wrap">
                     <a href="member_action.php?id=<?= $m['id']; ?>&action=approved" class="btn btn-success btn-sm">Re-Approve</a>
                     <a href="member_detail.php?id=<?= $m['id']; ?>" class="btn btn-secondary btn-sm">Detail</a>
+                    <a href="member_delete.php?id=<?= $m['id']; ?>" class="btn btn-dark btn-sm" onclick="return confirm('क्या आप वाकई इस सदस्य को हमेशा के लिए हटाना चाहते हैं?');">🗑️ Delete</a>
                 </div>
             </div>
         </div>

@@ -113,14 +113,18 @@ $result = $conn->query("SELECT * FROM suchnas ORDER BY id DESC");
                     </div>
                     <div class="col-md-6 mb-3">
                         <label class="form-label fw-bold">Thumbnail Image (मुख्य फोटो)</label>
-                        <input type="file" name="thumb_image" class="form-control" accept="image/*" required>
+                        <input type="file" name="thumb_image" id="thumb_image_input" class="form-control" accept="image/*" required>
+                        <div class="mt-2">
+                            <img id="thumb_preview" src="" style="max-height: 100px; display: none; border-radius: 8px;">
+                        </div>
                     </div>
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label fw-bold">Extra Images (अधिकतम 5 फोटो)</label>
-                    <input type="file" name="extra_images[]" class="form-control" accept="image/*" multiple max="5">
+                    <input type="file" name="extra_images[]" id="extra_images_input" class="form-control" accept="image/*" multiple max="5">
                     <div class="form-text">You can select up to 5 additional images.</div>
+                    <div id="extra_preview_container" class="mt-2 d-flex gap-2 flex-wrap"></div>
                 </div>
                 
                 <button type="submit" class="btn btn-success w-100 fw-bold">Publish Notice</button>
@@ -149,6 +153,7 @@ $result = $conn->query("SELECT * FROM suchnas ORDER BY id DESC");
                         <td class="fw-bold"><?= htmlspecialchars($row['title']) ?></td>
                         <td><?= date('d M Y h:i A', strtotime($row['datetime'])) ?></td>
                         <td class="text-end pe-3">
+                            <a href="suchna_edit.php?id=<?= $row['id'] ?>" class="btn btn-sm btn-outline-primary">Edit</a>
                             <a href="?delete_id=<?= $row['id'] ?>" class="btn btn-sm btn-outline-danger" onclick="return confirm('क्या आप वाकई डिलीट करना चाहते हैं?')">Delete</a>
                         </td>
                     </tr>
@@ -163,11 +168,51 @@ $result = $conn->query("SELECT * FROM suchnas ORDER BY id DESC");
 </div>
 
 <script>
-// Limit file selection to 5
-document.querySelector('input[name="extra_images[]"]').addEventListener('change', function() {
+// Limit file selection to 5 and show preview
+const extraInput = document.getElementById('extra_images_input');
+const extraPreview = document.getElementById('extra_preview_container');
+
+extraInput.addEventListener('change', function() {
+    extraPreview.innerHTML = ''; // clear preview
     if (this.files.length > 5) {
         alert("You can only select a maximum of 5 images.");
         this.value = ''; // clear selection
+        return;
+    }
+    
+    // Show previews
+    Array.from(this.files).forEach(file => {
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = document.createElement('img');
+                img.src = e.target.result;
+                img.style.maxHeight = '80px';
+                img.style.borderRadius = '8px';
+                img.style.objectFit = 'cover';
+                extraPreview.appendChild(img);
+            }
+            reader.readAsDataURL(file);
+        }
+    });
+});
+
+// Thumb preview
+const thumbInput = document.getElementById('thumb_image_input');
+const thumbPreview = document.getElementById('thumb_preview');
+
+thumbInput.addEventListener('change', function() {
+    const file = this.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            thumbPreview.src = e.target.result;
+            thumbPreview.style.display = 'block';
+        }
+        reader.readAsDataURL(file);
+    } else {
+        thumbPreview.style.display = 'none';
+        thumbPreview.src = '';
     }
 });
 </script>
