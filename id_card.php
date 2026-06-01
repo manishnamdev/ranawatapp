@@ -52,12 +52,12 @@ $formatted_id = sprintf("RS-%04d", $member['id']);
 
         .profile-pic {
             position: absolute;
-            top: 24.5%; /* Adjusted to center in the white circle */
+            top: 23.5%;
             left: 50%;
             transform: translateX(-50%);
-            margin-top: -10px; /* Moved 10px up as requested */
-            width: 160px;
-            height: 160px;
+            margin-top: -18px;
+            width: 175px;
+            height: 175px;
             border-radius: 50%;
             object-fit: cover;
             /* background: transparent; */
@@ -65,7 +65,7 @@ $formatted_id = sprintf("RS-%04d", $member['id']);
 
         .member-id-text {
             position: absolute;
-            top: 55.2%;
+            top: 53%;
             left: 65%;
             transform: translateX(-50%);
             font-size: 14px;
