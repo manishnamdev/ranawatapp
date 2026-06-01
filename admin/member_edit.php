@@ -214,7 +214,7 @@ $niwasQuery = $conn->query("SELECT name FROM niwas ORDER BY name ASC");
             </label>
         </div>
 
-        <button class="btn btn-success w-100">
+        <button class="btn btn-primary w-100">
             Update Member
         </button>
     </form>

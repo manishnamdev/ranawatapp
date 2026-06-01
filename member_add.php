@@ -50,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <label>निवासी</label>
         </div>
 
-        <button class="btn btn-success w-100">Update</button>
+        <button class="btn btn-primary w-100">Update</button>
     </form>
 </div>
 

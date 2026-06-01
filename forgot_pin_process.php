@@ -19,7 +19,7 @@ if ($result->num_rows > 0) {
         नंबर मिल गया ✅<br><br>
         <a href='https://wa.me/$admin_whatsapp?text=$text' 
            target='_blank'
-           class='btn btn-success w-100 mb-2'>
+           class='btn btn-primary w-100 mb-2'>
            WhatsApp से Admin को भेजें
         </a>
 

@@ -52,7 +52,7 @@ $result = $conn->query("SELECT * FROM niwas ORDER BY name ASC");
     </div>
 
     <?php if (isset($_GET['success'])): ?>
-        <div class="alert alert-success alert-dismissible fade show">
+        <div class="alert alert-primary alert-dismissible fade show">
             Action completed successfully.
             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
         </div>
@@ -92,7 +92,7 @@ $result = $conn->query("SELECT * FROM niwas ORDER BY name ASC");
                             </form>
                         </td>
                         <td class="text-end pe-3">
-                            <button type="submit" form="form-edit-<?= $row['id'] ?>" class="btn btn-sm btn-success">Save</button>
+                            <button type="submit" form="form-edit-<?= $row['id'] ?>" class="btn btn-sm btn-primary">Save</button>
                             <a href="?delete_id=<?= $row['id'] ?>" class="btn btn-sm btn-outline-danger" onclick="return confirm('क्या आप वाकई डिलीट करना चाहते हैं? (Are you sure you want to delete?)')">Delete</a>
                         </td>
                     </tr>

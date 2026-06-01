@@ -53,7 +53,7 @@ $endRecord   = min($offset + $limit, $totalRecords);
                 <a href="members_print.php" target="_blank" class="btn btn-outline-danger btn-sm fw-bold">
                     📥 Download PDF
                 </a>
-                <a href="member_add.php" class="btn btn-success btn-sm">
+                <a href="member_add.php" class="btn btn-primary btn-sm">
                     ➕ Add New Member
                 </a>
             </div>
@@ -112,7 +112,7 @@ $createdDate = date("d M Y, h:i A", strtotime($m['created_at']));
                 <div class="mt-2 d-flex gap-2">
                     <?php if ($status != 'approved'): ?>
                         <a href="member_action.php?id=<?= $m['id']; ?>&action=approved"
-                           class="btn btn-success btn-sm">Approve</a>
+                           class="btn btn-primary btn-sm">Approve</a>
                     <?php endif; ?>
 
                     <?php if ($status != 'rejected'): ?>

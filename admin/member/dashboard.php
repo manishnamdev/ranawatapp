@@ -163,7 +163,7 @@ $voteLabel = [
             echo '<div class="vote-success">
                     <b>✅ आपका वोट दर्ज हो चुका है</b><br>
                     आपने 
-                    <span class="fw-bold text-success">'
+                    <span class="fw-bold text-primary">'
                     .$voteLabel[$voteData['vote_option']] .
                     '</span> 
                     को वोट दिया है

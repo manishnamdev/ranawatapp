@@ -209,7 +209,7 @@ $colors = ['success', 'primary', 'danger', 'warning', 'info', 'secondary'];
     .accordion-button::after {
         background-size: 1rem;
     }
-    .bg-success-subtle { background-color: #d1e7dd !important; }
+    .bg-primary-subtle { background-color: #d1e7dd !important; }
     .bg-primary-subtle { background-color: #cfe2ff !important; }
     .bg-danger-subtle { background-color: #f8d7da !important; }
     .bg-warning-subtle { background-color: #fff3cd !important; }

@@ -56,7 +56,7 @@ if (isset($_GET['delete_id'])) {
 
 <div class="container mt-4">
     <?php if (isset($_GET['success'])): ?>
-        <div class="alert alert-success">Poll created successfully!</div>
+        <div class="alert alert-primary">Poll created successfully!</div>
     <?php endif; ?>
 
     <div class="card shadow-sm mb-4">
@@ -96,7 +96,7 @@ if (isset($_GET['delete_id'])) {
                     <button type="button" class="btn btn-outline-secondary btn-sm" onclick="addOption()">+ Add Another Option</button>
                 </div>
 
-                <button type="submit" class="btn btn-success w-100 fw-bold">Create & Activate Poll</button>
+                <button type="submit" class="btn btn-primary w-100 fw-bold">Create & Activate Poll</button>
             </form>
         </div>
     </div>
@@ -109,7 +109,7 @@ if (isset($_GET['delete_id'])) {
         $p_id = $p['id'];
         $optQuery = $conn->query("SELECT * FROM poll_options WHERE poll_id=$p_id");
     ?>
-    <div class="card shadow-sm mb-3 <?= $p['is_active'] ? 'border-success border-2' : '' ?>">
+    <div class="card shadow-sm mb-3 <?= $p['is_active'] ? 'border-primary border-2' : '' ?>">
         <div class="card-body">
             <h6 class="fw-bold"><?= htmlspecialchars($p['question']) ?></h6>
             <p class="mb-2" style="font-size: 12px;">
@@ -124,7 +124,7 @@ if (isset($_GET['delete_id'])) {
             
             <div class="d-flex justify-content-between align-items-center">
                 <?php if ($p['is_active']): ?>
-                    <span class="badge bg-success">Active Poll</span>
+                    <span class="badge bg-primary">Active Poll</span>
                 <?php else: ?>
                     <a href="?activate_id=<?= $p_id ?>" class="btn btn-sm btn-outline-primary">Set Active</a>
                 <?php endif; ?>

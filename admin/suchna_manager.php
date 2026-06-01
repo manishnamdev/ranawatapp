@@ -83,7 +83,7 @@ $result = $conn->query("SELECT * FROM suchnas ORDER BY id DESC");
     </div>
 
     <?php if (isset($_GET['success'])): ?>
-        <div class="alert alert-success alert-dismissible fade show">
+        <div class="alert alert-primary alert-dismissible fade show">
             Action completed successfully.
             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
         </div>
@@ -127,7 +127,7 @@ $result = $conn->query("SELECT * FROM suchnas ORDER BY id DESC");
                     <div id="extra_preview_container" class="mt-2 d-flex gap-2 flex-wrap"></div>
                 </div>
                 
-                <button type="submit" class="btn btn-success w-100 fw-bold">Publish Notice</button>
+                <button type="submit" class="btn btn-primary w-100 fw-bold">Publish Notice</button>
             </form>
         </div>
     </div>

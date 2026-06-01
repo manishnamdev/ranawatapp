@@ -630,7 +630,7 @@ $niwasList = $conn->query("SELECT name FROM niwas ORDER BY name ASC");
         <section class="card app-card section-card">
             <div class="card-body">
                 <div class="section-header">
-                    <span class="section-icon" style="background: linear-gradient(135deg, #10b981, #34d399);">🔍</span>
+                    <span class="section-icon" style="background: linear-gradient(135deg, #0f7ae5, #18b7de);">🔍</span>
                     <div>
                         <h2 class="section-title">सदस्य खोजें</h2>
                         <p class="section-desc">मूल निवास के आधार पर समाज के सदस्यों को खोजें</p>

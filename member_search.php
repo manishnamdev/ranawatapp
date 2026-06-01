@@ -76,6 +76,7 @@ $niwasList = $conn->query("SELECT name FROM niwas ORDER BY name ASC");
                                     <th>फोटो</th>
                                     <th>नाम</th>
                                     <th>कुल सदस्य</th>
+                                    <th>एक्शन</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -90,6 +91,7 @@ $niwasList = $conn->query("SELECT name FROM niwas ORDER BY name ASC");
                                         </td>
                                         <td class="fw-bold text-primary"><?= htmlspecialchars($res['name']); ?></td>
                                         <td><span class="badge bg-secondary rounded-pill px-3"><?= (int)$res['fam_count'] + 1; ?></span></td>
+                                        <td><a href="member_detail.php?id=<?= $res['id']; ?>" class="btn btn-sm btn-primary rounded-pill" style="font-size: 12px; font-weight: bold;">View Details</a></td>
                                     </tr>
                                 <?php endwhile; ?>
                             </tbody>

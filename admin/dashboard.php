@@ -81,7 +81,7 @@ if ($searchMobile != '') {
 
             <div class="row mt-3 g-2">
                 <div class="col-12">
-                    <a href="member_add.php" class="btn btn-success w-100 py-2 fw-bold">
+                    <a href="member_add.php" class="btn btn-primary w-100 py-2 fw-bold">
                         ➕ Add New Member
                     </a>
                 </div>
@@ -221,7 +221,7 @@ if ($searchMobile != '') {
                         <a href="member_edit.php?id=<?= $m['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
                         <a href="member_detail.php?id=<?= $m['id']; ?>" class="btn btn-secondary btn-sm">Detail</a>
                                         <a href="member_send_whatsapp.php?id=<?= $m['id']; ?>"
-   class="btn btn-success btn-sm">
+   class="btn btn-primary btn-sm">
    📲 Send Login
 </a>
                     </div>
@@ -243,7 +243,7 @@ if ($searchMobile != '') {
                 <small><?= $m['mobile']; ?></small>
 
                 <div class="mt-2 d-flex gap-2 flex-wrap">
-                    <a href="member_action.php?id=<?= $m['id']; ?>&action=approved" class="btn btn-success btn-sm">Approve</a>
+                    <a href="member_action.php?id=<?= $m['id']; ?>&action=approved" class="btn btn-primary btn-sm">Approve</a>
                     <a href="member_action.php?id=<?= $m['id']; ?>&action=rejected" class="btn btn-danger btn-sm">Reject</a>
                     <a href="member_detail.php?id=<?= $m['id']; ?>" class="btn btn-secondary btn-sm">Detail</a>
                     <a href="member_delete.php?id=<?= $m['id']; ?>" class="btn btn-dark btn-sm" onclick="return confirm('क्या आप वाकई इस सदस्य को हमेशा के लिए हटाना चाहते हैं?');">🗑️ Delete</a>
@@ -266,7 +266,7 @@ if ($searchMobile != '') {
                 <div class="mt-2 d-flex gap-2 flex-wrap">
                     <a href="member_detail.php?id=<?= $m['id']; ?>" class="btn btn-secondary btn-sm">Detail</a>
                     <a href="member_edit.php?id=<?= $m['id']; ?>" class="btn btn-warning btn-sm">✏️ Edit</a>
-                    <a href="member_send_whatsapp.php?id=<?= $m['id']; ?>" class="btn btn-success btn-sm">📲 Send Login</a>
+                    <a href="member_send_whatsapp.php?id=<?= $m['id']; ?>" class="btn btn-primary btn-sm">📲 Send Login</a>
                 </div>
                 
             </div>
@@ -285,7 +285,7 @@ $disabledVote = $conn->query("
 ");
 
 if ($disabledVote->num_rows == 0) {
-    echo '<div class="alert alert-success">सभी Approved सदस्य वोटिंग के लिए सक्षम हैं</div>';
+    echo '<div class="alert alert-primary">सभी Approved सदस्य वोटिंग के लिए सक्षम हैं</div>';
 }
 
 while ($m = $disabledVote->fetch_assoc()):
@@ -298,7 +298,7 @@ while ($m = $disabledVote->fetch_assoc()):
             <div class="mt-2 d-flex gap-2 flex-wrap">
                 
    <a href="member_toggle_vote.php?id=<?= $m['id']; ?>&action=enable"
-   class="btn btn-success btn-sm"
+   class="btn btn-primary btn-sm"
    onclick="return confirm('क्या आप इस सदस्य को मतदान के लिए सक्षम करना चाहते हैं?');">
    ✅ Enable Voting
 </a>
@@ -329,7 +329,7 @@ while ($m = $disabledVote->fetch_assoc()):
                 <b><?= $m['name']; ?></b><br>
                 <small><?= $m['mobile']; ?></small>
                 <div class="mt-2 d-flex gap-2 flex-wrap">
-                    <a href="member_action.php?id=<?= $m['id']; ?>&action=approved" class="btn btn-success btn-sm">Re-Approve</a>
+                    <a href="member_action.php?id=<?= $m['id']; ?>&action=approved" class="btn btn-primary btn-sm">Re-Approve</a>
                     <a href="member_detail.php?id=<?= $m['id']; ?>" class="btn btn-secondary btn-sm">Detail</a>
                     <a href="member_delete.php?id=<?= $m['id']; ?>" class="btn btn-dark btn-sm" onclick="return confirm('क्या आप वाकई इस सदस्य को हमेशा के लिए हटाना चाहते हैं?');">🗑️ Delete</a>
                 </div>

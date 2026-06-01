@@ -59,7 +59,7 @@ $whatsapp_link = "https://wa.me/".$admin_number."?text=".$whatsapp_message;
 ?>
 
 <a href="<?= $whatsapp_link ?>" target="_blank" 
-   class="btn btn-success btn-lg w-100 mb-2">
+   class="btn btn-primary btn-lg w-100 mb-2">
    Admin को WhatsApp करें (Login PIN हेतु)
 </a>
 

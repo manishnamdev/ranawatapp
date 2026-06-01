@@ -75,7 +75,7 @@ $options = $conn->query("SELECT * FROM poll_options WHERE poll_id=$poll_id");
     </div>
     <?php endwhile; ?>
 
-    <button type="submit" class="btn btn-success btn-lg w-100 mt-3">
+    <button type="submit" class="btn btn-primary btn-lg w-100 mt-3">
         वोट सबमिट करें
     </button>
 </form>

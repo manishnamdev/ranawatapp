@@ -74,7 +74,7 @@ if ($searchMobile != '') {
 
                     <?php if ($m['status'] != 'approved'): ?>
                         <a href="member_action.php?id=<?= $m['id']; ?>&action=approved"
-                           class="btn btn-success btn-sm">Approve</a>
+                           class="btn btn-primary btn-sm">Approve</a>
                     <?php endif; ?>
 
                     <?php if ($m['status'] != 'rejected'): ?>
@@ -108,12 +108,12 @@ if ($searchMobile != '') {
     <!-- STAT CARDS -->
 <div class="row text-center mb-4">
     <div class="col-4">
-        <div class="card border-success shadow-sm">
+        <div class="card border-primary shadow-sm">
             <div class="card-body">
-                <small class="text-success">Approved</small>
+                <small class="text-primary">Approved</small>
                 <h5><?= $totalApproved; ?></h5>
             </div>
-               </div><a href="members.php?status=approved" class="btn btn-sm btn-success">More</a>
+               </div><a href="members.php?status=approved" class="btn btn-sm btn-primary">More</a>
         
     </div>
 
@@ -168,7 +168,7 @@ if ($searchMobile != '') {
                 <small><?= $m['mobile']; ?></small>
 
                 <div class="mt-2 d-flex gap-2">
-                    <a href="member_action.php?id=<?= $m['id']; ?>&action=approved" class="btn btn-success btn-sm">Approve</a>
+                    <a href="member_action.php?id=<?= $m['id']; ?>&action=approved" class="btn btn-primary btn-sm">Approve</a>
                     <a href="member_action.php?id=<?= $m['id']; ?>&action=rejected" class="btn btn-danger btn-sm">Reject</a>
                     <a href="member_detail.php?id=<?= $m['id']; ?>" class="btn btn-secondary btn-sm">Detail</a>
                 </div>
@@ -216,7 +216,7 @@ if ($rejected->num_rows == 0) {
 
             <div class="mt-2 d-flex gap-2">
                 <a href="member_action.php?id=<?= $m['id']; ?>&action=approved"
-                   class="btn btn-success btn-sm">
+                   class="btn btn-primary btn-sm">
                    Re-Approve
                 </a>
 

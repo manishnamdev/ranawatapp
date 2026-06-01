@@ -182,5 +182,47 @@ $appBase = ($scriptDir === '/' || $scriptDir === '.') ? '' : rtrim($scriptDir, '
 </script>
 <?php endif; ?>
 
+<style>
+#global-upload-loader {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(255, 255, 255, 0.9);
+    z-index: 99999;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.loader-spinner {
+    width: 3.5rem; height: 3.5rem;
+    border: 5px solid #e2e8f0;
+    border-top: 5px solid #0ea5e9;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+</style>
+
+<div id="global-upload-loader">
+    <div class="loader-spinner"></div>
+    <h5 class="mt-3 fw-bold" style="color: #0f172a;">Uploading... Please wait</h5>
+    <p class="text-muted small">Do not refresh or leave this page.</p>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var forms = document.querySelectorAll('form[enctype="multipart/form-data"]');
+    forms.forEach(function(form) {
+        form.addEventListener('submit', function(e) {
+            // Check if form is valid before showing loader
+            if (this.checkValidity && !this.checkValidity()) {
+                return;
+            }
+            document.getElementById('global-upload-loader').style.display = 'flex';
+        });
+    });
+});
+</script>
+
 </body>
 </html>
