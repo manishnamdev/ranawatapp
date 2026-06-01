@@ -31,8 +31,25 @@ if (!$member) {
     exit;
 }
 
-if (!isset($_FILES['aadhar_image']) || $_FILES['aadhar_image']['error'] !== UPLOAD_ERR_OK) {
-    $_SESSION['aadhar_flash'] = ['type' => 'danger', 'message' => 'Please select an image to upload.'];
+if (!isset($_FILES['aadhar_image'])) {
+    $_SESSION['aadhar_flash'] = ['type' => 'danger', 'message' => 'No image received. The file might be too large (exceeds server limits).'];
+    header("Location: member_documents.php");
+    exit;
+}
+
+if ($_FILES['aadhar_image']['error'] !== UPLOAD_ERR_OK) {
+    $uploadErrors = [
+        UPLOAD_ERR_INI_SIZE   => 'The uploaded file exceeds the upload_max_filesize directive in php.ini.',
+        UPLOAD_ERR_FORM_SIZE  => 'The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form.',
+        UPLOAD_ERR_PARTIAL    => 'The uploaded file was only partially uploaded.',
+        UPLOAD_ERR_NO_FILE    => 'No file was uploaded.',
+        UPLOAD_ERR_NO_TMP_DIR => 'Missing a temporary folder.',
+        UPLOAD_ERR_CANT_WRITE => 'Failed to write file to disk.',
+        UPLOAD_ERR_EXTENSION  => 'A PHP extension stopped the file upload.',
+    ];
+    $errorCode = $_FILES['aadhar_image']['error'];
+    $message = isset($uploadErrors[$errorCode]) ? $uploadErrors[$errorCode] : 'Unknown upload error.';
+    $_SESSION['aadhar_flash'] = ['type' => 'danger', 'message' => $message];
     header("Location: member_documents.php");
     exit;
 }
@@ -56,14 +73,18 @@ if ($file['size'] > $maxSize) {
 
 $uploadDir = __DIR__ . DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR . "aadhar";
 if (!is_dir($uploadDir)) {
-    mkdir($uploadDir, 0777, true);
+    if (!mkdir($uploadDir, 0777, true)) {
+        $_SESSION['aadhar_flash'] = ['type' => 'danger', 'message' => 'Failed to create upload directory. Please check permissions.'];
+        header("Location: member_documents.php");
+        exit;
+    }
 }
 
 $newName = "aadhar_" . $side . "_" . $memberId . "_" . time() . "." . $ext;
 $targetPath = $uploadDir . DIRECTORY_SEPARATOR . $newName;
 
 if (!move_uploaded_file($file['tmp_name'], $targetPath)) {
-    $_SESSION['aadhar_flash'] = ['type' => 'danger', 'message' => 'Upload failed. Please try again.'];
+    $_SESSION['aadhar_flash'] = ['type' => 'danger', 'message' => 'Upload failed to save file. Please check folder permissions.'];
     header("Location: member_documents.php");
     exit;
 }
