@@ -16,6 +16,7 @@
     <link rel="apple-touch-icon" href="assets/images/logo.jpg">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/avatar-cropper.css">
 
     <style>
         body {

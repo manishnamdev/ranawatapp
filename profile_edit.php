@@ -70,6 +70,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="alert alert-danger text-center"><?= htmlspecialchars($error); ?></div>
             <?php endif; ?>
 
+            <div class="text-center mb-4 pb-2">
+                <div class="position-relative d-inline-block" data-avatar-trigger style="cursor: pointer;" title="फ़ोटो बदलें">
+                    <?php if (!empty($member['profile_photo'])): ?>
+                        <img src="uploads/profile_photos/<?= htmlspecialchars($member['profile_photo']); ?>" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid #0ea5e9; box-shadow: 0 4px 10px rgba(0,0,0,0.1);" alt="Profile Photo">
+                    <?php else: ?>
+                        <div style="width: 100px; height: 100px; border-radius: 50%; background: #f1f5f9; display: flex; align-items: center; justify-content: center; font-size: 44px; border: 3px solid #cbd5e1; box-shadow: 0 4px 10px rgba(0,0,0,0.06);">👤</div>
+                    <?php endif; ?>
+                    <button type="button" class="avatar-badge-btn" data-avatar-trigger title="फ़ोटो बदलें">📷</button>
+                </div>
+                <div class="mt-2">
+                    <button type="button" class="btn btn-sm btn-outline-primary rounded-pill px-3 fw-semibold" data-avatar-trigger>
+                        📷 फ़ोटो बदलें (Change Photo)
+                    </button>
+                </div>
+                <form action="profile_photo_upload.php" method="POST" enctype="multipart/form-data" id="profilePhotoForm" style="display:none;">
+                    <input type="file" id="profilePhotoInput" name="profile_photo" accept="image/*">
+                </form>
+            </div>
+
             <form action="profile_edit.php" method="POST">
                 
                 <div class="mb-3">

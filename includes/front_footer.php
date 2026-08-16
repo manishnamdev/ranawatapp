@@ -224,5 +224,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
+<script src="assets/js/image-compressor.js"></script>
+<script src="assets/js/avatar-cropper.js"></script>
 </body>
 </html>

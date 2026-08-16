@@ -35,3 +35,5 @@ body {
         <a href="contact.php">📞<br>Contact</a>
     </div>
 </div>
+
+<script src="assets/js/image-compressor.js"></script>

@@ -408,22 +408,23 @@ $niwasList = $conn->query("SELECT name FROM niwas ORDER BY name ASC");
             </div>
 
             <div class="profile-heading text-center">
-                <div class="profile-avatar-container">
+                <div class="profile-avatar-container" data-avatar-trigger style="cursor: pointer;" title="फ़ोटो बदलें (Change Photo)">
                     <?php if (!empty($member['profile_photo'])): ?>
                         <img src="uploads/profile_photos/<?= htmlspecialchars($member['profile_photo']); ?>" class="profile-avatar-img" alt="Profile Photo">
                     <?php else: ?>
                         <div class="profile-avatar-icon">👤</div>
                     <?php endif; ?>
+                    <button type="button" class="avatar-badge-btn" data-avatar-trigger title="फ़ोटो बदलें">📷</button>
                 </div>
                 
                 <form action="profile_photo_upload.php" method="POST" enctype="multipart/form-data" id="profilePhotoForm">
-                    <label for="profilePhotoInput" class="profile-upload-btn">
-                        🖼️ Update Photo
-                    </label>
+                    <button type="button" class="profile-upload-btn" data-avatar-trigger>
+                        📷 Update Photo
+                    </button>
                     <div style="font-size: 11px; opacity: 0.85; margin-top: -10px; margin-bottom: 12px; font-weight: 500;">
-                        Max Size: 500 KB
+                        सेल्फी / कैमरा • गैलरी • गोल क्रॉप (Circle Crop)
                     </div>
-                    <input type="file" id="profilePhotoInput" name="profile_photo" accept="image/*" style="display:none;" onchange="document.getElementById('profilePhotoForm').submit();">
+                    <input type="file" id="profilePhotoInput" name="profile_photo" accept="image/*" style="display:none;">
                 </form>
 
                 <h1 class="profile-name"><?= htmlspecialchars($member['name']); ?></h1>
